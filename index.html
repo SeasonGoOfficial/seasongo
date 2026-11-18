@@ -1,90 +1,57 @@
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071b3b">
 <title>SEASONGO - Vivre sa saison autrement</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#081426;color:white}
-header{padding:25px 20px;text-align:center;background:#102541}
-.logo{font-size:34px;font-weight:900;letter-spacing:2px;color:#38d9c5}
-.logo span{color:white}
-header p{margin-top:8px;color:#c3d2e5;font-size:14px}
-.hero{padding:55px 22px 40px;text-align:center;background:linear-gradient(145deg,#102c4c,#087c83)}
-.hero h1{font-size:34px;margin-bottom:15px}
-.hero p{font-size:16px;line-height:1.6;color:#e0f5f5}
-.btn{display:inline-block;margin-top:25px;padding:15px 25px;background:#35d9c2;color:#081426;text-decoration:none;font-weight:bold;border-radius:12px}
-section{padding:30px 20px}
-h2{font-size:23px;margin-bottom:18px}
-.intro{text-align:center;color:#b8c9dc;line-height:1.6}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{background:#142943;padding:20px 14px;border-radius:14px;border:1px solid #29415c}
-.card .emoji{font-size:29px;margin-bottom:12px}
-.card h3{font-size:16px;margin-bottom:8px;color:#39ddc7}
-.card p{font-size:13px;line-height:1.5;color:#c1cee0}
-.highlight{background:#102c46;border-radius:16px;padding:22px;margin-top:15px}
-.highlight p{color:#c7d5e5;line-height:1.6;font-size:14px}
-.highlight h3{color:#38d9c5;margin-bottom:10px}
-footer{text-align:center;padding:30px 15px;background:#102541;color:#a9bdd1;font-size:12px;line-height:2}
-@media(min-width:650px){.cards{grid-template-columns:repeat(4,1fr)}.hero h1{font-size:48px}}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#071b3b;color:white}
+header{text-align:center;padding:35px 15px 25px;background:linear-gradient(145deg,#102e60,#087bd0)}
+.logo{font-size:36px;font-weight:900;letter-spacing:3px}
+.slogan{font-size:16px;margin-top:10px}
+.intro{padding:28px 20px;text-align:center}
+h1{font-size:27px;line-height:1.25}
+.intro p{color:#d2e5ff;line-height:1.6}
+.button{display:inline-block;background:#20c5e8;color:#062044;padding:14px 24px;border-radius:30px;font-weight:bold;text-decoration:none;margin-top:12px}
+h2{text-align:center;font-size:23px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;padding:15px}
+.card{background:#123568;border:1px solid #28548d;border-radius:15px;padding:20px 12px;text-align:center;min-height:115px}
+.card span{font-size:27px;display:block;margin-bottom:10px}
+.card strong{font-size:14px}
+footer{text-align:center;padding:30px 15px;color:#a9c8ec;font-size:13px}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">SEASON<span>GO</span></div>
-<p>Vivre sa saison autrement 🌍</p>
+<div class="logo">SEASONGO</div>
+<div class="slogan">Vivre sa saison autrement.</div>
 </header>
-
-<div class="hero">
+<section class="intro">
 <h1>Ta saison commence ici !</h1>
-<p>Le premier univers pensé pour les travailleurs saisonniers.<br>Du travail, du logement, des rencontres et des aventures.</p>
-<a href="#services" class="btn">Découvrir SEASONGO</a>
-</div>
-
-<section>
-<p class="intro">Fini de chercher partout. SEASONGO rassemble tout ce dont tu as besoin pour réussir ta saison, en France et à l'international.</p>
+<p>Jobs vérifiés, logement, rencontres, bons plans et aventures. Tout ce dont tu as besoin pour réussir ta saison au même endroit.</p>
+<a href="#rubriques" class="button">Découvrir SEASONGO</a>
 </section>
-
-<section id="services">
-<h2>🌟 Ton univers saisonnier</h2>
-<div class="cards">
-<div class="card"><div class="emoji">💼</div><h3>Emploi</h3><p>Trouve ton prochain job saisonnier et découvre les offres.</p></div>
-<div class="card"><div class="emoji">🛡️</div><h3>Confiance</h3><p>Des employeurs vérifiés et une meilleure protection contre les fausses annonces.</p></div>
-<div class="card"><div class="emoji">🏠</div><h3>Logement</h3><p>Recherche un hébergement adapté à ta saison.</p></div>
-<div class="card"><div class="emoji">🧭</div><h3>Compagnon géographique</h3><p>Découvre les lieux, services et bons plans autour de toi.</p></div>
-<div class="card"><div class="emoji">🎿</div><h3>Vie en station</h3><p>Activités, soirées et découvertes selon ton budget.</p></div>
-<div class="card"><div class="emoji">💬</div><h3>Communauté</h3><p>Échange avec les saisonniers du monde entier et traduis les conversations.</p></div>
-<div class="card"><div class="emoji">🚗</div><h3>Covoiturage</h3><p>Partage tes trajets et trouve des compagnons de route.</p></div>
-<div class="card"><div class="emoji">💰</div><h3>Budget saison</h3><p>Organise tes dépenses et trouve les opportunités adaptées à ton budget.</p></div>
-</div>
+<h2 id="rubriques">Explore SEASONGO</h2>
+<section class="grid">
+<div class="card"><span>💼</span><strong>Jobs saisonniers</strong></div>
+<div class="card"><span>🛡️</span><strong>Emplois vérifiés</strong></div>
+<div class="card"><span>🏠</span><strong>Logements</strong></div>
+<div class="card"><span>🗺️</span><strong>Compagnon géographique</strong></div>
+<div class="card"><span>🎉</span><strong>Sorties & soirées</strong></div>
+<div class="card"><span>🏔️</span><strong>Loisirs & activités</strong></div>
+<div class="card"><span>💬</span><strong>Communauté & chat</strong></div>
+<div class="card"><span>🚗</span><strong>Covoiturage</strong></div>
+<div class="card"><span>💰</span><strong>Budget saison</strong></div>
+<div class="card"><span>⭐</span><strong>Pass SEASONGO</strong></div>
 </section>
-
-<section>
-<div class="highlight">
-<h3>🔐 La confiance avant tout</h3>
-<p>Notre ambition : lutter contre les fausses annonces, les arnaques et les mauvaises surprises. Les saisonniers méritent des informations fiables et des employeurs transparents.</p>
-</div>
-<div class="highlight">
-<h3>🌍 Une communauté internationale</h3>
-<p>Parce qu'une saison, c'est aussi des rencontres, du partage et des amitiés qui dépassent les frontières.</p>
-</div>
-</section>
-
-<section>
-<div class="highlight" style="text-align:center">
-<h2>Prêt à vivre ta saison autrement ?</h2>
-<p>Rejoins l'aventure SEASONGO.</p>
-<a href="mailto:contact@seasongo.com" class="btn">Nous contacter</a>
-</div>
-</section>
-
 <footer>
 <strong>SEASONGO</strong><br>
-Vivre sa saison autrement 🌍<br>
-© 2026 SEASONGO - Tous droits réservés
+La communauté des saisonniers.<br>
+Vivre sa saison autrement.
 </footer>
 </body>
 </html>
-
