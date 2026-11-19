@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,90 +7,195 @@
 <title>SEASONGO - Vivre sa saison autrement</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#071b36;color:white}
-header{text-align:center;padding:28px 15px;background:#102e55}
-.logo{font-size:35px;font-weight:bold;color:#49d5ff}
-header p{color:#d4eaff}
-main{max-width:700px;margin:25px auto;padding:18px}
-.panel{background:#12345b;padding:22px;border-radius:16px}
-h2{margin-top:0}
-label{display:block;margin:14px 0 7px}
-input,select{width:100%;padding:14px;border:0;border-radius:9px;font-size:16px}
-button{width:100%;padding:15px;margin-top:17px;border:0;border-radius:9px;background:#22c5ef;color:#06213b;font-weight:bold;font-size:16px}
+body{
+ margin:0;font-family:Arial,sans-serif;
+ background:#07172e;color:white;
+}
+header{
+ padding:25px 18px;text-align:center;
+ background:linear-gradient(135deg,#092e58,#087eaa);
+}
+.logo{font-size:34px;font-weight:900;letter-spacing:2px}
+.logo span{color:#35d5ee}
+header p{margin:8px 0 0;color:#d5eaff}
+main{max-width:750px;margin:auto;padding:20px}
+h2{color:#48d8ef}
+.card{
+ background:#102947;border:1px solid #244b70;
+ padding:20px;border-radius:15px;margin-bottom:18px;
+}
+label{display:block;margin:14px 0 7px;font-weight:bold}
+input,select{
+ width:100%;padding:14px;border-radius:9px;
+ border:1px solid #47718e;background:#f5f9ff;
+ font-size:16px;color:#102947;
+}
+button{
+ width:100%;padding:15px;border:0;border-radius:10px;
+ background:#20c5dc;color:#06172b;
+ font-size:17px;font-weight:bold;margin-top:20px;
+ cursor:pointer;
+}
 button:active{opacity:.8}
-#results{margin-top:22px}
-.offer{background:#fff;color:#10233e;border-radius:12px;padding:17px;margin:14px 0}
-.offer h3{color:#087da9;margin-top:0}
-.tag{display:inline-block;background:#dff6ff;padding:6px 9px;border-radius:6px;margin:4px;font-size:13px}
-.details{display:none;margin-top:12px;padding:12px;background:#edf8ff;border-radius:8px}
-.small{font-size:13px;color:#c9e6ff;text-align:center}
+.result{
+ background:#173b5e;padding:16px;border-radius:12px;
+ margin-top:15px;
+}
+.result h3{color:#4ce0ed;margin-top:0}
+.small{color:#b9cee1;font-size:13px;line-height:1.6}
+.link{
+ display:block;text-align:center;padding:13px;
+ background:#20c5dc;color:#06172b;
+ border-radius:9px;text-decoration:none;
+ font-weight:bold;margin-top:14px;
+}
+.tag{
+ display:inline-block;background:#174c55;
+ color:#6df0dc;padding:6px 10px;
+ border-radius:20px;font-size:12px;
+}
+footer{text-align:center;padding:25px;color:#9bb3cc}
 </style>
 </head>
 <body>
+
 <header>
-<div class="logo">SEASONGO</div>
-<p>Vivre sa saison autrement</p>
+ <div class="logo">SEASON<span>GO</span></div>
+ <p>Vivre sa saison autrement 🌍</p>
+ <p>Le monde saisonnier au même endroit.</p>
 </header>
+
 <main>
-<div class="panel">
-<h2>🔎 Trouve ta prochaine saison</h2>
-<label>Métier recherché</label>
-<input id="job" placeholder="Ex : serveur">
-<label>Destination</label>
-<input id="place" placeholder="Ex : Tignes">
-<label>Logement</label>
-<select id="housing">
-<option value="yes">Logement obligatoire</option>
-<option value="no">Logement non obligatoire</option>
-<option value="all">Toutes les offres</option>
-</select>
-<button onclick="searchOffers()">Lancer la recherche</button>
-</div>
-<div id="results"></div>
-<p class="small">SEASONGO – La saison commence ici.</p>
+
+<section class="card">
+ <h2>🔎 Trouve ton prochain emploi</h2>
+ <p class="small">
+ Recherche des emplois saisonniers selon tes envies.
+ </p>
+
+ <label for="metier">Quel métier recherches-tu ?</label>
+ <input id="metier" placeholder="Serveur, cuisinier, barman...">
+
+ <label for="lieu">Quelle destination ?</label>
+ <input id="lieu" placeholder="Tignes, Avoriaz, Megève...">
+
+ <label for="contrat">Type de contrat</label>
+ <select id="contrat">
+  <option value="Saisonnier">Saisonnier</option>
+  <option value="CDD">CDD</option>
+  <option value="CDI">CDI</option>
+  <option value="">Tous les contrats</option>
+ </select>
+
+ <label for="logement">Logement</label>
+ <select id="logement">
+  <option value="">Indifférent</option>
+  <option value="Logement obligatoire">Logement obligatoire</option>
+  <option value="Logement souhaité">Logement souhaité</option>
+ </select>
+
+ <button onclick="rechercher()">LANCER MA RECHERCHE 🚀</button>
+</section>
+
+<section class="card" id="zoneResultats" style="display:none">
+ <h2>📋 Tes résultats</h2>
+ <div id="resume"></div>
+ <div id="offres"></div>
+</section>
+
+<section class="card">
+ <h2>🛡️ La confiance avant tout</h2>
+ <p>Chez SEASONGO, la sécurité des saisonniers est une priorité.</p>
+ <p>✓ Vérification des employeurs</p>
+ <p>✓ Identification des annonces douteuses</p>
+ <p>✓ Transparence sur le logement et le salaire</p>
+ <p class="small">
+ Une annonce externe n'est pas considérée comme vérifiée
+ automatiquement.
+ </p>
+</section>
+
+<section class="card">
+ <h2>🌍 La vie en station</h2>
+ <p>Rencontres, sorties, bons plans, loisirs et covoiturage.</p>
+ <p class="small">La saison ne se résume pas au travail !</p>
+</section>
+
+<section class="card">
+ <h2>💬 La communauté SEASONGO</h2>
+ <p>Échange avec les saisonniers, partage tes expériences
+ et rencontre les personnes qui vivent la même aventure.</p>
+ <span class="tag">Bientôt disponible</span>
+</section>
+
+<footer>
+ SEASONGO © 2026<br>
+ Vivre sa saison autrement.
+</footer>
+
 </main>
+
 <script>
-const offers=[
-{job:"Serveur",place:"Tignes",housing:true,salary:"Selon expérience",contract:"Saison hiver",description:"Poste de serveur en restauration à Tignes. Contact et conditions à confirmer auprès de l'employeur."},
-{job:"Chef de rang",place:"Tignes",housing:true,salary:"À définir",contract:"Saison hiver",description:"Recherche chef de rang pour la saison d'hiver. Logement proposé, modalités à confirmer."},
-{job:"Barman",place:"Tignes",housing:false,salary:"Selon expérience",contract:"Saison hiver",description:"Poste de barman en station. Conditions à confirmer auprès de l'établissement."},
-{job:"Serveur",place:"Val Thorens",housing:true,salary:"Selon profil",contract:"Saison hiver",description:"Exemple de poste saisonnier. Annonce de démonstration, non vérifiée."},
-{job:"Serveur",place:"Avoriaz",housing:true,salary:"À définir",contract:"Saison hiver",description:"Exemple de poste saisonnier. Annonce de démonstration, non vérifiée."}
-];
-function searchOffers(){
-const job=document.getElementById("job").value.trim().toLowerCase();
-const place=document.getElementById("place").value.trim().toLowerCase();
-const housing=document.getElementById("housing").value;
-const results=document.getElementById("results");
-let found=offers.filter(o=>
-(!job||o.job.toLowerCase().includes(job))&&
-(!place||o.place.toLowerCase().includes(place))&&
-(housing!=="yes"||o.housing)
-);
-results.innerHTML="<h2>Résultats de ta recherche</h2>";
-if(found.length===0){
-results.innerHTML+="<div class='panel'>Aucune offre dans notre démonstration pour ces critères. Essaie une autre destination ou un autre métier.</div>";
-return;
+function rechercher(){
+
+ const metier=document.getElementById("metier").value.trim();
+ const lieu=document.getElementById("lieu").value.trim();
+ const contrat=document.getElementById("contrat").value;
+ const logement=document.getElementById("logement").value;
+
+ if(!metier && !lieu){
+  alert("Indique au moins un métier ou une destination.");
+  return;
+ }
+
+ const zone=document.getElementById("zoneResultats");
+ const resume=document.getElementById("resume");
+ const offres=document.getElementById("offres");
+
+ zone.style.display="block";
+
+ resume.innerHTML=`
+ <div class="result">
+ <h3>Ta recherche SEASONGO</h3>
+ <p>Métier : ${securiser(metier || "Tous")}</p>
+ <p>Destination : ${securiser(lieu || "Toutes")}</p>
+ <p>Contrat : ${securiser(contrat || "Tous")}</p>
+ <p>Logement : ${securiser(logement || "Indifférent")}</p>
+ </div>`;
+
+ const mots=[metier,lieu,contrat,logement]
+ .filter(Boolean).join(" ");
+
+ const url="https://candidat.francetravail.fr/offres/recherche?motsCles="
+ +encodeURIComponent(mots);
+
+ offres.innerHTML=`
+ <div class="result">
+ <h3>🔎 Consulter les offres d'emploi</h3>
+ <p>Ta recherche est prête. Consulte les annonces
+ disponibles auprès de France Travail.</p>
+ <p class="small">
+ Les résultats externes ne sont pas encore intégrés
+ directement dans SEASONGO.
+ </p>
+ <a class="link" href="${url}" target="_blank"
+ rel="noopener noreferrer">
+ VOIR LES OFFRES DISPONIBLES
+ </a>
+ </div>`;
+
+ zone.scrollIntoView({behavior:"smooth"});
 }
-found.forEach((o,i)=>{
-results.innerHTML+=`
-<div class="offer">
-<h3>${o.job} – ${o.place}</h3>
-<span class="tag">${o.housing?"Logement fourni":"Logement non précisé"}</span>
-<span class="tag">${o.contract}</span>
-<p><b>Salaire :</b> ${o.salary}</p>
-<button onclick="showDetails(${i})">Voir l'annonce</button>
-<div class="details" id="detail${i}">
-<p>${o.description}</p>
-<p><b>Important :</b> Offre de démonstration SEASONGO, pas une annonce d'emploi réelle vérifiée.</p>
-</div>
-</div>`;
-});
-}
-function showDetails(i){
-const box=document.getElementById("detail"+i);
-box.style.display=box.style.display==="block"?"none":"block";
+
+function securiser(texte){
+ return texte.replace(/[&<>"']/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",
+  '"':"&quot;","'":"&#39;"}[c];
+ });
 }
 </script>
+
 </body>
 </html>
+
+
