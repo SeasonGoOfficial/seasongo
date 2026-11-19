@@ -6,31 +6,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#071a35">
 <title>SEASONGO | Vivre sa saison autrement</title>
+
 <style>
-:root{--bg:#071a35;--panel:#102c4c;--cyan:#35d5d7;--gold:#ffc65a;--muted:#a9bed3;--line:#284563;--green:#38d996;--red:#ff7777}
+:root{
+--bg:#071a35;--panel:#102c4c;--cyan:#35d5d7;
+--gold:#ffc65a;--muted:#a9bed3;--line:#284563;
+--green:#38d996;--red:#ff7777
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Arial,sans-serif;background:var(--bg);color:white}
-header{position:sticky;top:0;z-index:20;background:#06152b;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--line)}
+
+header{
+position:sticky;top:0;z-index:20;background:#06152b;
+padding:15px 5%;display:flex;justify-content:space-between;
+align-items:center;flex-wrap:wrap;gap:12px;
+border-bottom:1px solid var(--line)
+}
 .logo{font-size:25px;font-weight:900;letter-spacing:2px}
 .logo span,h1 span{color:var(--cyan)}
 nav{display:flex;gap:6px;flex-wrap:wrap}
 nav button{background:none;border:0;color:white;padding:9px;cursor:pointer}
 nav button:hover{color:var(--cyan)}
-.hero{padding:80px 7%;min-height:440px;background:linear-gradient(110deg,#071a35,#102f54 60%,#176d82);display:flex;align-items:center}
-.hero-content{max-width:650px}
-.tag,.pill{display:inline-block;border:1px solid var(--cyan);color:var(--cyan);padding:7px 12px;border-radius:30px;font-size:12px}
+
+/* NOUVEAU VISUEL PAYSAGE */
+.hero{
+position:relative;overflow:hidden;
+min-height:570px;padding:80px 7%;
+display:flex;align-items:center;
+background:
+linear-gradient(90deg,rgba(4,18,37,.92),rgba(4,18,37,.58),rgba(4,18,37,.15)),
+url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=85")
+center 48%/cover no-repeat;
+}
+.hero-content{max-width:680px;position:relative;z-index:1}
+.tag,.pill{
+display:inline-block;border:1px solid var(--cyan);
+color:var(--cyan);padding:7px 12px;border-radius:30px;font-size:12px
+}
 h1{font-size:clamp(40px,7vw,68px);line-height:1.1;margin:22px 0}
-.hero p{font-size:18px;color:#d2e1f1;margin-bottom:22px}
+.hero p{font-size:18px;color:#e0eaf5;margin-bottom:22px;line-height:1.6}
+
 section{padding:55px 7%;scroll-margin-top:85px}
 .section-title{font-size:29px;margin-bottom:12px}
 .subtitle{color:var(--muted);margin-bottom:25px;line-height:1.5}
 .grid,.results{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.card,.job{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card,.job{
+background:var(--panel);border:1px solid var(--line);
+border-radius:14px;padding:20px
+}
 .card h3,.job h3{margin:10px 0}
 .card p,.job p{color:var(--muted);font-size:14px;line-height:1.6;margin:6px 0}
 .icon{font-size:29px}
-.btn{border:0;background:var(--cyan);color:#061a32;font-weight:bold;padding:12px 17px;border-radius:8px;cursor:pointer;margin:4px}
+.btn{
+border:0;background:var(--cyan);color:#061a32;
+font-weight:bold;padding:12px 17px;border-radius:8px;
+cursor:pointer;margin:4px
+}
 .btn.gold{background:var(--gold)}
 .btn.dark{background:#24486b;color:white}
 .btn.red{background:#8e3542;color:white}
@@ -38,38 +70,77 @@ section{padding:55px 7%;scroll-margin-top:85px}
 form{display:grid;gap:13px}
 .field{display:grid;gap:6px}
 label{font-size:13px;color:#d6e6f5}
-input,select,textarea{width:100%;padding:12px;border-radius:8px;border:1px solid #3a5877;background:#091f39;color:white;font-size:15px}
+input,select,textarea{
+width:100%;padding:12px;border-radius:8px;
+border:1px solid #3a5877;background:#091f39;color:white;font-size:15px
+}
 textarea{min-height:90px;resize:vertical}
 input:focus,select:focus,textarea:focus{outline:1px solid var(--cyan)}
 .searchbox{background:var(--panel);padding:22px;border-radius:14px}
-.notice{background:#173e43;border:1px solid #2d807b;padding:14px;border-radius:9px;margin:12px 0;color:#bdf8e9;line-height:1.6}
-.warning{background:#493c20;border:1px solid #92753c;padding:14px;border-radius:9px;margin:12px 0;color:#ffe1a0;line-height:1.6}
-.badge-verified{display:inline-block;background:#124c3b;color:#8ff2c6;padding:6px 10px;border-radius:20px;font-size:11px}
-.badge-pending{display:inline-block;background:#554522;color:#ffdc8a;padding:6px 10px;border-radius:20px;font-size:11px}
+.notice{
+background:#173e43;border:1px solid #2d807b;
+padding:14px;border-radius:9px;margin:12px 0;
+color:#bdf8e9;line-height:1.6
+}
+.warning{
+background:#493c20;border:1px solid #92753c;
+padding:14px;border-radius:9px;margin:12px 0;
+color:#ffe1a0;line-height:1.6
+}
+.badge-verified{
+display:inline-block;background:#124c3b;color:#8ff2c6;
+padding:6px 10px;border-radius:20px;font-size:11px
+}
+.badge-pending{
+display:inline-block;background:#554522;color:#ffdc8a;
+padding:6px 10px;border-radius:20px;font-size:11px
+}
 .hidden{display:none!important}
 .small{font-size:12px;color:var(--muted);line-height:1.5}
 hr{border:0;border-top:1px solid var(--line);margin:22px 0}
 footer{background:#041225;padding:35px;text-align:center;color:var(--muted)}
-.modal{position:fixed;inset:0;background:#000b;z-index:50;display:none;align-items:center;justify-content:center;padding:15px}
+.modal{
+position:fixed;inset:0;background:#000b;z-index:50;
+display:none;align-items:center;justify-content:center;padding:15px
+}
 .modal.show{display:flex}
-.modal-content{background:var(--panel);padding:25px;border-radius:15px;width:100%;max-width:500px;max-height:90vh;overflow:auto}
+.modal-content{
+background:var(--panel);padding:25px;border-radius:15px;
+width:100%;max-width:500px;max-height:90vh;overflow:auto
+}
 .close{float:right;background:none;border:0;color:white;font-size:25px;cursor:pointer}
 .community-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
-.tab{background:#193e5c;color:white;border:1px solid var(--line);padding:11px 15px;border-radius:8px;cursor:pointer}
+.tab{
+background:#193e5c;color:white;border:1px solid var(--line);
+padding:11px 15px;border-radius:8px;cursor:pointer
+}
 .tab.active{background:var(--cyan);color:#061a32;font-weight:bold}
 .post{background:var(--panel);border:1px solid var(--line);padding:17px;border-radius:12px;margin:12px 0}
 .post-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .post-meta{font-size:12px;color:var(--muted);margin:7px 0}
 .post-content{line-height:1.6;margin:12px 0;overflow-wrap:anywhere}
 .post-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
-.chat-box{background:#091f39;border:1px solid var(--line);border-radius:12px;padding:14px;min-height:180px;max-height:400px;overflow-y:auto}
-.chat-message{background:#173e5c;border-radius:10px;padding:11px;margin:8px 0;max-width:90%;overflow-wrap:anywhere}
+.chat-box{
+background:#091f39;border:1px solid var(--line);border-radius:12px;
+padding:14px;min-height:180px;max-height:400px;overflow-y:auto
+}
+.chat-message{
+background:#173e5c;border-radius:10px;padding:11px;
+margin:8px 0;max-width:90%;overflow-wrap:anywhere
+}
 .chat-message.mine{margin-left:auto;background:#15545a}
 .chat-message small{display:block;color:#b8d0df;margin-top:5px;font-size:11px}
 .empty{text-align:center;color:var(--muted);padding:25px}
-@media(max-width:650px){header{justify-content:center}nav{justify-content:center}.hero{padding:60px 6%}section{padding:45px 6%}}
+
+@media(max-width:650px){
+header{justify-content:center}
+nav{justify-content:center}
+.hero{padding:60px 6%;min-height:480px;background-position:center}
+section{padding:45px 6%}
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -85,6 +156,7 @@ footer{background:#041225;padding:35px;text-align:center;color:var(--muted)}
 </header>
 
 <main>
+
 <div class="hero" id="accueil">
 <div class="hero-content">
 <span class="tag">LA NOUVELLE EXPÉRIENCE SAISONNIÈRE</span>
@@ -184,7 +256,6 @@ Vérification en cours : demande enregistrée.<br>
 </div>
 </section>
 
-<!-- NOUVELLE COMMUNAUTE SEASONGO -->
 <section id="communaute">
 <h2 class="section-title">🌍 La communauté SEASONGO</h2>
 <p class="subtitle">Ta station, tes rencontres, tes bons plans. La saison se vit aussi ensemble !</p>
@@ -217,7 +288,6 @@ Vérification en cours : demande enregistrée.<br>
 <button class="tab" onclick="communityTab('plans',this)">🎿 Bons plans</button>
 </div>
 
-<!-- CHAT -->
 <div id="community-chat">
 <div class="card">
 <h3>💬 Le chat des saisonniers</h3>
@@ -240,7 +310,6 @@ Vérification en cours : demande enregistrée.<br>
 </div>
 </div>
 
-<!-- COVOITURAGE -->
 <div id="community-rides" class="hidden">
 <div class="card">
 <h3>🚗 Le covoiturage des saisonniers</h3>
@@ -260,7 +329,6 @@ Vérification en cours : demande enregistrée.<br>
 <div id="rideList"></div>
 </div>
 
-<!-- BONS PLANS -->
 <div id="community-plans" class="hidden">
 <div class="card">
 <h3>🎿 Partage tes bons plans</h3>
@@ -301,6 +369,7 @@ Vérification en cours : demande enregistrée.<br>
 <div id="budgetResult" class="notice hidden"></div>
 </div>
 </section>
+
 </main>
 
 <footer>
@@ -317,32 +386,43 @@ Vérification en cours : demande enregistrée.<br>
 </div>
 
 <script>
-// OUTILS
 const $=id=>document.getElementById(id);
 const getData=(key,fallback=[])=>{
-try{const d=JSON.parse(localStorage.getItem(key));return Array.isArray(fallback)?(Array.isArray(d)?d:fallback):(d??fallback)}catch(e){return fallback}
+try{
+const d=JSON.parse(localStorage.getItem(key));
+return Array.isArray(fallback)?(Array.isArray(d)?d:fallback):(d??fallback)
+}catch(e){return fallback}
 };
 const saveData=(key,data)=>localStorage.setItem(key,JSON.stringify(data));
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function go(id){$(id).scrollIntoView({behavior:"smooth"});}
 function closeModal(){$("modal").classList.remove("show");}
-function copyText(t){if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>alert("Copié !")).catch(()=>alert("Copie impossible."));else alert(t);}
+function copyText(t){
+if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>alert("Copié !")).catch(()=>alert("Copie impossible."));
+else alert(t);
+}
 function validSiret(s){
 s=String(s).replace(/\s/g,"");
 if(!/^\d{14}$/.test(s))return false;
 let sum=0;
-for(let i=0;i<14;i++){let n=+s[i];if(i%2===0){n*=2;if(n>9)n-=9;}sum+=n;}
+for(let i=0;i<14;i++){
+let n=+s[i];
+if(i%2===0){n*=2;if(n>9)n-=9;}
+sum+=n;
+}
 return sum%10===0;
 }
 
-// OFFRES
+/* OFFRES */
 const defaultJobs=[
 {id:1,entreprise:"La Flèche d'Or",metier:"Chef de rang",ville:"Saint-Gervais",salaire:2700,logement:"oui",description:"Restaurant au pied des pistes. Hébergement et repas fournis. Contrat saisonnier."},
 {id:2,entreprise:"Brasserie des Alpes",metier:"Serveur",ville:"Tignes",salaire:2100,logement:"oui",description:"Recherche serveur motivé pour la saison d'hiver. Logement fourni."},
 {id:3,entreprise:"Restaurant du Sommet",metier:"Cuisinier",ville:"Avoriaz",salaire:2300,logement:"oui",description:"Poste en cuisine pour la saison d'hiver."}
 ];
 let jobs=[...defaultJobs];
-getData("seasongo_jobs").forEach(j=>{if(!jobs.some(x=>x.id===j.id))jobs.push(j)});
+getData("seasongo_jobs").forEach(j=>{
+if(!jobs.some(x=>x.id===j.id))jobs.push(j);
+});
 
 function getRequests(){return getData("seasongo_verifications");}
 function saveRequests(d){saveData("seasongo_verifications",d);}
@@ -352,35 +432,72 @@ if(s==="verified")return '<span class="badge-verified">✓ Établissement vérif
 if(s==="refused")return '<span class="pill">Demande refusée</span>';
 return '<span class="badge-pending">⏳ Vérification en cours</span>';
 }
-function isEmployerVerified(j){return Boolean(j.siret&&getRequests().some(r=>r.siret===j.siret&&getStatus(r)==="verified"));}
+function isEmployerVerified(j){
+return Boolean(j.siret&&getRequests().some(r=>r.siret===j.siret&&getStatus(r)==="verified"));
+}
 
 $("verifyForm").addEventListener("submit",e=>{
 e.preventDefault();
 const s=$("siret").value.trim();
 if(!validSiret(s)){alert("SIRET invalide : vérifie les 14 chiffres.");return;}
 const requests=getRequests();
-if(requests.some(r=>r.siret===s&&getStatus(r)!=="refused")){alert("Une demande existe déjà pour ce SIRET.");return;}
-requests.push({id:Date.now(),entreprise:$("entreprise").value.trim(),responsable:$("responsable").value.trim(),email:$("emailPro").value.trim(),siret:s,ville:$("ville").value.trim(),date:new Date().toISOString(),status:"pending"});
+if(requests.some(r=>r.siret===s&&getStatus(r)!=="refused")){
+alert("Une demande existe déjà pour ce SIRET.");return;
+}
+requests.push({
+id:Date.now(),
+entreprise:$("entreprise").value.trim(),
+responsable:$("responsable").value.trim(),
+email:$("emailPro").value.trim(),
+siret:s,ville:$("ville").value.trim(),
+date:new Date().toISOString(),status:"pending"
+});
 saveRequests(requests);
 $("verifyResult").innerHTML='<div class="notice">Demande enregistrée. Vérification en cours. Ceci ne constitue pas une certification officielle.</div>';
-e.target.reset();renderAdmin();renderMyRequests();
+e.target.reset();
+renderAdmin();
+renderMyRequests();
 });
 
 function renderMyRequests(){
 const a=$("myRequests"),r=getRequests();
-a.innerHTML=r.length?r.map(x=>`<div class="card" style="margin:10px 0"><h3>${esc(x.entreprise)}</h3><p>${esc(x.ville)} · ${esc(x.siret)}</p>${statusBadge(getStatus(x))}</div>`).join(""):'<p class="small">Aucune demande enregistrée.</p>';
+a.innerHTML=r.length?r.map(x=>`
+<div class="card" style="margin:10px 0">
+<h3>${esc(x.entreprise)}</h3>
+<p>${esc(x.ville)} · ${esc(x.siret)}</p>
+${statusBadge(getStatus(x))}
+</div>`).join(""):'<p class="small">Aucune demande enregistrée.</p>';
 }
-function toggleAdmin(){$("adminPanel").classList.toggle("hidden");renderAdmin();}
+function toggleAdmin(){
+$("adminPanel").classList.toggle("hidden");
+renderAdmin();
+}
 function renderAdmin(){
 const a=$("adminRequests"),r=getRequests();
 if(!a)return;
-a.innerHTML=r.length?r.map(x=>`<div class="card" style="margin:10px 0"><h3>${esc(x.entreprise)}</h3><p>Responsable : ${esc(x.responsable)}</p><p>Email : ${esc(x.email)}</p><p>SIRET : ${esc(x.siret)}</p><p>Destination : ${esc(x.ville)}</p>${statusBadge(getStatus(x))}<div style="margin-top:10px"><button class="btn" onclick="changeVerification(${Number(x.id)},'verified')">Valider en démo</button><button class="btn red" onclick="changeVerification(${Number(x.id)},'refused')">Refuser</button></div></div>`).join(""):'<p class="small">Aucune demande.</p>';
+a.innerHTML=r.length?r.map(x=>`
+<div class="card" style="margin:10px 0">
+<h3>${esc(x.entreprise)}</h3>
+<p>Responsable : ${esc(x.responsable)}</p>
+<p>Email : ${esc(x.email)}</p>
+<p>SIRET : ${esc(x.siret)}</p>
+<p>Destination : ${esc(x.ville)}</p>
+${statusBadge(getStatus(x))}
+<div style="margin-top:10px">
+<button class="btn" onclick="changeVerification(${Number(x.id)},'verified')">Valider en démo</button>
+<button class="btn red" onclick="changeVerification(${Number(x.id)},'refused')">Refuser</button>
+</div>
+</div>`).join(""):'<p class="small">Aucune demande.</p>';
 }
 function changeVerification(id,status){
 const r=getRequests(),x=r.find(a=>Number(a.id)===id);
 if(!x)return;
 if(!confirm("Cette action est uniquement une simulation locale, sans vérification officielle. Continuer ?"))return;
-x.status=status;saveRequests(r);renderAdmin();renderMyRequests();showJobs(jobs);
+x.status=status;
+saveRequests(r);
+renderAdmin();
+renderMyRequests();
+showJobs(jobs);
 }
 
 function showJobs(list){
@@ -388,135 +505,245 @@ $("results").innerHTML=list.length?list.map(j=>`
 <div class="job">
 <span class="pill">${j.logement==="oui"?"Logement fourni":"Sans logement fourni"}</span>
 ${isEmployerVerified(j)?'<p><span class="badge-verified">✓ Établissement vérifié (démo)</span></p>':""}
-<h3>${esc(j.metier)}</h3><p>📍 ${esc(j.ville)}</p>
-<p>🏢 ${esc(j.entreprise)}</p><p>💶 ${Number(j.salaire).toLocaleString("fr-FR")} € brut / mois</p>
+<h3>${esc(j.metier)}</h3>
+<p>📍 ${esc(j.ville)}</p>
+<p>🏢 ${esc(j.entreprise)}</p>
+<p>💶 ${Number(j.salaire).toLocaleString("fr-FR")} € brut / mois</p>
 <button class="btn" onclick="details(${Number(j.id)})">Voir l'offre</button>
 </div>`).join(""):'<div class="card">Aucune offre ne correspond à ces critères.</div>';
 }
 $("searchForm").addEventListener("submit",e=>{
 e.preventDefault();
-const m=$("metier").value.trim().toLowerCase(),d=$("destination").value.trim().toLowerCase(),l=$("logement").value,s=Number($("salaire").value)||0;
-const f=jobs.filter(j=>(!m||j.metier.toLowerCase().includes(m))&&(!d||j.ville.toLowerCase().includes(d))&&(l==="tous"||j.logement===l)&&Number(j.salaire)>=s);
+const m=$("metier").value.trim().toLowerCase();
+const d=$("destination").value.trim().toLowerCase();
+const l=$("logement").value;
+const s=Number($("salaire").value)||0;
+const f=jobs.filter(j=>
+(!m||j.metier.toLowerCase().includes(m))&&
+(!d||j.ville.toLowerCase().includes(d))&&
+(l==="tous"||j.logement===l)&&Number(j.salaire)>=s
+);
 $("searchSummary").classList.remove("hidden");
 $("searchSummary").textContent=f.length+" offre(s) trouvée(s).";
 showJobs(f);
 });
 function details(id){
-const j=jobs.find(x=>x.id===id);if(!j)return;
-$("modalBody").innerHTML=`<h2>${esc(j.metier)}</h2><p>${esc(j.entreprise)}</p><p>${esc(j.ville)}</p><p>${j.salaire} € brut/mois</p><p>${j.logement==="oui"?"Logement fourni":"Logement non fourni"}</p><hr><p>${esc(j.description)}</p><button class="btn" onclick="apply(${id})">Postuler</button>`;
+const j=jobs.find(x=>x.id===id);
+if(!j)return;
+$("modalBody").innerHTML=`
+<h2>${esc(j.metier)}</h2>
+<p>${esc(j.entreprise)}</p>
+<p>${esc(j.ville)}</p>
+<p>${j.salaire} € brut/mois</p>
+<p>${j.logement==="oui"?"Logement fourni":"Logement non fourni"}</p>
+<hr><p>${esc(j.description)}</p>
+<button class="btn" onclick="apply(${id})">Postuler</button>`;
 $("modal").classList.add("show");
 }
 function apply(id){
-const j=jobs.find(x=>x.id===id);if(!j)return;
-$("modalBody").innerHTML=`<h2>📩 Candidature</h2><p>${esc(j.metier)} – ${esc(j.entreprise)}</p><form id="applyForm"><div class="field"><label>Nom et prénom</label><input id="appName" required></div><div class="field"><label>Email</label><input id="appEmail" type="email" required></div><div class="field"><label>Message</label><textarea id="appMessage" required></textarea></div><button class="btn">Préparer ma candidature</button></form><p class="small">Cette démonstration ne transmet pas la candidature.</p>`;
-$("applyForm").addEventListener("submit",e=>{e.preventDefault();const t="Candidature – "+j.metier+"\nNom : "+$("appName").value+"\nEmail : "+$("appEmail").value+"\n"+$("appMessage").value;$("modalBody").innerHTML='<h3>Candidature prête</h3><button class="btn" id="copyApp">Copier ma candidature</button><p class="small">Elle n’a pas encore été envoyée.</p>';$("copyApp").onclick=()=>copyText(t);});
+const j=jobs.find(x=>x.id===id);
+if(!j)return;
+$("modalBody").innerHTML=`
+<h2>📩 Candidature</h2>
+<p>${esc(j.metier)} – ${esc(j.entreprise)}</p>
+<form id="applyForm">
+<div class="field"><label>Nom et prénom</label><input id="appName" required></div>
+<div class="field"><label>Email</label><input id="appEmail" type="email" required></div>
+<div class="field"><label>Message</label><textarea id="appMessage" required></textarea></div>
+<button class="btn">Préparer ma candidature</button>
+</form>
+<p class="small">Cette démonstration ne transmet pas la candidature.</p>`;
+$("applyForm").addEventListener("submit",e=>{
+e.preventDefault();
+const t="Candidature – "+j.metier+"\nNom : "+$("appName").value+"\nEmail : "+$("appEmail").value+"\n"+$("appMessage").value;
+$("modalBody").innerHTML=`
+<h3>Candidature prête</h3>
+<button class="btn" id="copyApp">Copier ma candidature</button>
+<p class="small">Elle n’a pas encore été envoyée.</p>`;
+$("copyApp").onclick=()=>copyText(t);
+});
 }
 
 $("jobForm").addEventListener("submit",e=>{
-e.preventDefault();const s=$("jobSiret").value.trim();
+e.preventDefault();
+const s=$("jobSiret").value.trim();
 if(!validSiret(s)){alert("SIRET invalide.");return;}
-const j={id:Date.now(),entreprise:$("jobEntreprise").value.trim(),siret:s,metier:$("jobMetier").value.trim(),ville:$("jobVille").value.trim(),salaire:Number($("jobSalaire").value),logement:$("jobLogement").value,description:$("jobDescription").value.trim()};
-jobs.push(j);saveData("seasongo_jobs",jobs);
-$("jobResult").innerHTML='<div class="notice">Offre ajoutée à la démonstration SEASONGO.</div>';e.target.reset();showJobs(jobs);
+const j={
+id:Date.now(),
+entreprise:$("jobEntreprise").value.trim(),
+siret:s,
+metier:$("jobMetier").value.trim(),
+ville:$("jobVille").value.trim(),
+salaire:Number($("jobSalaire").value),
+logement:$("jobLogement").value,
+description:$("jobDescription").value.trim()
+};
+jobs.push(j);
+saveData("seasongo_jobs",jobs);
+$("jobResult").innerHTML='<div class="notice">Offre ajoutée à la démonstration SEASONGO.</div>';
+e.target.reset();
+showJobs(jobs);
 });
 
-// BUDGET
+/* BUDGET */
 $("budgetForm").addEventListener("submit",e=>{
 e.preventDefault();
-const r=Number($("revenu").value),d=Number($("depenses").value),m=Number($("mois").value);
+const r=Number($("revenu").value);
+const d=Number($("depenses").value);
+const m=Number($("mois").value);
 if(r<0||d<0||m<=0){alert("Vérifie tes chiffres.");return;}
 $("budgetResult").classList.remove("hidden");
-$("budgetResult").innerHTML="Épargne mensuelle estimée : <strong>"+(r-d).toLocaleString("fr-FR")+" €</strong><br>Épargne totale estimée : <strong>"+((r-d)*m).toLocaleString("fr-FR")+" €</strong>";
+$("budgetResult").innerHTML=
+"Épargne mensuelle estimée : <strong>"+(r-d).toLocaleString("fr-FR")+" €</strong><br>"+
+"Épargne totale estimée : <strong>"+((r-d)*m).toLocaleString("fr-FR")+" €</strong>";
 });
 
-// COMMUNAUTE : PROFIL
+/* PROFIL */
 function getProfile(){return getData("seasongo_profile",{});}
 function renderProfile(){
 const p=getProfile();
-if(p.pseudo){$("pseudo").value=p.pseudo;$("station").value=p.station;$("langue").value=p.langue;$("profileResult").textContent="Profil enregistré : "+p.pseudo+" · "+p.station;}
+if(p.pseudo){
+$("pseudo").value=p.pseudo;
+$("station").value=p.station;
+$("langue").value=p.langue;
+$("profileResult").textContent="Profil enregistré : "+p.pseudo+" · "+p.station;
+}
 }
 $("profileForm").addEventListener("submit",e=>{
 e.preventDefault();
-const p={pseudo:$("pseudo").value.trim(),station:$("station").value,langue:$("langue").value};
+const p={
+pseudo:$("pseudo").value.trim(),
+station:$("station").value,
+langue:$("langue").value
+};
 saveData("seasongo_profile",p);
 $("profileResult").textContent="✓ Profil enregistré sur cet appareil.";
 renderCommunity();
 });
 
 function communityTab(name,button){
-["chat","rides","plans"].forEach(x=>$("community-"+x).classList.toggle("hidden",x!==name));
+["chat","rides","plans"].forEach(x=>
+$("community-"+x).classList.toggle("hidden",x!==name)
+);
 document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
 button.classList.add("active");
 renderCommunity();
 }
 
-// CHAT LOCAL
+/* CHAT */
 function getMessages(){return getData("seasongo_messages");}
 $("chatForm").addEventListener("submit",e=>{
 e.preventDefault();
 const p=getProfile();
 if(!p.pseudo){alert("Enregistre d'abord ton profil saisonnier.");return;}
-const text=$("chatText").value.trim();if(!text)return;
+const text=$("chatText").value.trim();
+if(!text)return;
 const messages=getMessages();
-messages.push({id:Date.now(),pseudo:p.pseudo,station:$("chatStation").value,text,date:new Date().toISOString()});
+messages.push({
+id:Date.now(),pseudo:p.pseudo,
+station:$("chatStation").value,
+text,date:new Date().toISOString()
+});
 saveData("seasongo_messages",messages);
-$("chatText").value="";renderCommunity();
+$("chatText").value="";
+renderCommunity();
 });
 function renderChat(){
 const p=getProfile(),station=$("chatStation").value;
-const list=getMessages().filter(m=>station==="Toutes les stations"||m.station===station||m.station==="Toutes les stations");
+const blocked=getBlocked();
+const list=getMessages().filter(m=>
+(station==="Toutes les stations"||m.station===station||m.station==="Toutes les stations")&&
+!blocked.includes(m.pseudo)
+);
 $("chatMessages").innerHTML=list.length?list.map(m=>`
 <div class="chat-message ${p.pseudo===m.pseudo?"mine":""}">
 <strong>${esc(m.pseudo)}</strong>
 <span class="small"> · ${esc(m.station)}</span>
 <div>${esc(m.text)}</div>
 <small>${new Date(m.date).toLocaleString("fr-FR")}</small>
-<div class="post-actions"><button class="btn dark" onclick="reportPost(${Number(m.id)})">Signaler</button><button class="btn red" onclick="blockUser('${encodeURIComponent(m.pseudo)}')">Bloquer</button></div>
+<div class="post-actions">
+<button class="btn dark" onclick="reportPost(${Number(m.id)})">Signaler</button>
+<button class="btn red" onclick="blockUser('${encodeURIComponent(m.pseudo)}')">Bloquer</button>
+</div>
 </div>`).join(""):'<div class="empty">Aucun message ici. Sois le premier à lancer la discussion !</div>';
 }
 
-// COVOITURAGE
+/* COVOITURAGE */
 function getRides(){return getData("seasongo_rides");}
 $("rideForm").addEventListener("submit",e=>{
-e.preventDefault();const p=getProfile();
+e.preventDefault();
+const p=getProfile();
 if(!p.pseudo){alert("Enregistre d'abord ton profil.");return;}
 const a=getRides();
-a.unshift({id:Date.now(),pseudo:p.pseudo,type:$("rideType").value,from:$("rideFrom").value.trim(),to:$("rideTo").value.trim(),date:$("rideDate").value,seats:$("rideSeats").value,info:$("rideInfo").value.trim()});
-saveData("seasongo_rides",a);e.target.reset();renderCommunity();
+a.unshift({
+id:Date.now(),pseudo:p.pseudo,
+type:$("rideType").value,
+from:$("rideFrom").value.trim(),
+to:$("rideTo").value.trim(),
+date:$("rideDate").value,
+seats:$("rideSeats").value,
+info:$("rideInfo").value.trim()
+});
+saveData("seasongo_rides",a);
+e.target.reset();
+renderCommunity();
 });
 function renderRides(){
-const p=getProfile(),a=getRides();
+const a=getRides().filter(x=>!getBlocked().includes(x.pseudo));
 $("rideList").innerHTML=a.length?a.map(x=>`
 <div class="post">
-<div class="post-head"><strong>🚗 ${x.type==="propose"?"Trajet proposé":"Trajet recherché"}</strong><span class="pill">${esc(x.date)}</span></div>
+<div class="post-head">
+<strong>🚗 ${x.type==="propose"?"Trajet proposé":"Trajet recherché"}</strong>
+<span class="pill">${esc(x.date)}</span>
+</div>
 <h3>${esc(x.from)} → ${esc(x.to)}</h3>
-<p>Par ${esc(x.pseudo)} · ${x.type==="propose"?esc(x.seats)+" place(s) annoncée(s)": "Recherche de place"}</p>
+<p>Par ${esc(x.pseudo)} · ${x.type==="propose"?esc(x.seats)+" place(s) annoncée(s)":"Recherche de place"}</p>
 <p>${esc(x.info)}</p>
-<div class="post-actions"><button class="btn dark" onclick="copyText('Trajet : ${esc(x.from)} vers ${esc(x.to)} le ${esc(x.date)}')">Copier le trajet</button><button class="btn dark" onclick="reportPost(${Number(x.id)})">Signaler</button><button class="btn red" onclick="blockUser('${encodeURIComponent(x.pseudo)}')">Bloquer</button></div>
+<div class="post-actions">
+<button class="btn dark" onclick="copyText('Trajet : ${esc(x.from)} vers ${esc(x.to)} le ${esc(x.date)}')">Copier le trajet</button>
+<button class="btn dark" onclick="reportPost(${Number(x.id)})">Signaler</button>
+<button class="btn red" onclick="blockUser('${encodeURIComponent(x.pseudo)}')">Bloquer</button>
+</div>
 </div>`).join(""):'<div class="empty">Aucun trajet publié pour le moment.</div>';
 }
 
-// BONS PLANS
+/* BONS PLANS */
 function getPlans(){return getData("seasongo_plans");}
 $("planForm").addEventListener("submit",e=>{
-e.preventDefault();const p=getProfile();
+e.preventDefault();
+const p=getProfile();
 if(!p.pseudo){alert("Enregistre d'abord ton profil.");return;}
 const a=getPlans();
-a.unshift({id:Date.now(),pseudo:p.pseudo,title:$("planTitle").value.trim(),station:$("planStation").value.trim(),category:$("planCategory").value,description:$("planDescription").value.trim(),date:new Date().toISOString()});
-saveData("seasongo_plans",a);e.target.reset();renderCommunity();
+a.unshift({
+id:Date.now(),pseudo:p.pseudo,
+title:$("planTitle").value.trim(),
+station:$("planStation").value.trim(),
+category:$("planCategory").value,
+description:$("planDescription").value.trim(),
+date:new Date().toISOString()
+});
+saveData("seasongo_plans",a);
+e.target.reset();
+renderCommunity();
 });
 function renderPlans(){
-const a=getPlans();
+const a=getPlans().filter(x=>!getBlocked().includes(x.pseudo));
 $("planList").innerHTML=a.length?a.map(x=>`
 <div class="post">
-<div class="post-head"><strong>🎿 ${esc(x.title)}</strong><span class="pill">${esc(x.category)}</span></div>
+<div class="post-head">
+<strong>🎿 ${esc(x.title)}</strong>
+<span class="pill">${esc(x.category)}</span>
+</div>
 <p class="post-meta">📍 ${esc(x.station)} · Par ${esc(x.pseudo)}</p>
 <div class="post-content">${esc(x.description)}</div>
-<div class="post-actions"><button class="btn dark" onclick="reportPost(${Number(x.id)})">Signaler</button><button class="btn red" onclick="blockUser('${encodeURIComponent(x.pseudo)}')">Bloquer</button></div>
+<div class="post-actions">
+<button class="btn dark" onclick="reportPost(${Number(x.id)})">Signaler</button>
+<button class="btn red" onclick="blockUser('${encodeURIComponent(x.pseudo)}')">Bloquer</button>
+</div>
 </div>`).join(""):'<div class="empty">Aucun bon plan partagé pour le moment.</div>';
 }
 
-// SECURITE COMMUNAUTAIRE
+/* SECURITE COMMUNAUTE */
 function getBlocked(){return getData("seasongo_blocked",[]);}
 function blockUser(encoded){
 const name=decodeURIComponent(encoded);
@@ -529,28 +756,26 @@ renderCommunity();
 }
 function reportPost(id){
 const reports=getData("seasongo_reports");
-reports.push({id,date:new Date().toISOString(),status:"signalement local"});
+reports.push({
+id,date:new Date().toISOString(),
+status:"signalement local"
+});
 saveData("seasongo_reports",reports);
 alert("Signalement enregistré sur cet appareil. Il n'est pas encore transmis à une équipe de modération.");
 }
 function renderCommunity(){
-const blocked=getBlocked();
 renderChat();
 renderRides();
 renderPlans();
-// Masquer les contenus des profils bloqués
-document.querySelectorAll("#chatMessages .chat-message,#rideList .post,#planList .post").forEach(el=>{
-const name=el.querySelector("strong")?.textContent||"";
-if(blocked.includes(name))el.remove();
-});
 }
 
-// INITIALISATION
+/* INITIALISATION */
 renderMyRequests();
 renderAdmin();
 showJobs(jobs);
 renderProfile();
 renderCommunity();
 </script>
+
 </body>
 </html>
