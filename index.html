@@ -4,287 +4,418 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SEASONGO - Vivre sa saison autrement</title>
-
+<meta name="theme-color" content="#071a35">
+<title>SEASONGO | Vivre sa saison autrement</title>
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#071b35;
- color:white;
+:root{
+--bg:#071a35;--panel:#102c4c;--cyan:#35d5d7;
+--gold:#ffc65a;--white:#fff;--muted:#a9bed3;
+--line:#284563;--green:#38d996;
 }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:var(--bg);color:white}
 header{
- background:#0c2d53;
- padding:24px 15px;
- text-align:center;
+position:sticky;top:0;z-index:20;background:#06152b;
+padding:15px 5%;display:flex;align-items:center;
+justify-content:space-between;border-bottom:1px solid var(--line);
+gap:15px;flex-wrap:wrap
 }
-.logo{
- font-size:35px;
- font-weight:bold;
- color:#35c8ff;
- letter-spacing:2px;
+.logo{font-size:26px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--cyan)}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+nav button{background:none;border:0;color:white;padding:9px;
+cursor:pointer;font-size:13px}
+nav button:hover{color:var(--cyan)}
+.hero{
+padding:85px 7%;min-height:490px;display:flex;
+align-items:center;
+background:linear-gradient(110deg,#071a35 5%,#102f54 60%,#176d82);
+position:relative;overflow:hidden
 }
-header p{color:#c5d9ee}
-nav{
- display:flex;
- flex-wrap:wrap;
- justify-content:center;
- gap:9px;
- padding:15px;
- background:#102b4b;
+.hero:after{
+content:"";position:absolute;width:300px;height:300px;
+border:1px solid #ffffff30;border-radius:50%;
+right:8%;top:20%;box-shadow:0 0 0 40px #ffffff08,
+0 0 0 80px #ffffff05
 }
-button{
- background:#087fc4;
- color:white;
- border:0;
- padding:12px 17px;
- border-radius:9px;
- cursor:pointer;
- font-weight:bold;
+.hero-content{max-width:650px;position:relative;z-index:2}
+.tag{display:inline-block;border:1px solid var(--cyan);
+color:var(--cyan);padding:7px 14px;border-radius:30px;font-size:12px}
+h1{font-size:clamp(40px,7vw,68px);line-height:1.08;margin:22px 0}
+h1 span{color:var(--cyan)}
+.hero p{font-size:18px;color:#d2e1f1;margin-bottom:25px}
+.btn{
+border:0;background:var(--cyan);color:#061a32;
+font-weight:bold;padding:13px 19px;border-radius:9px;
+cursor:pointer;margin:4px
 }
-button:hover{background:#13a5ed}
-main{
- max-width:850px;
- margin:auto;
- padding:20px;
-}
-.card{
- background:#12365c;
- border:1px solid #28527a;
- border-radius:14px;
- padding:20px;
- margin:18px 0;
-}
-h2{color:#40caff}
+.btn.gold{background:var(--gold)}
+.btn.dark{background:#24486b;color:white}
+.btn:hover{filter:brightness(1.12)}
+section{padding:65px 7%;scroll-margin-top:90px}
+.section-title{font-size:30px;margin-bottom:12px}
+.subtitle{color:var(--muted);margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);
+border-radius:15px;padding:22px}
+.card h3{margin:10px 0;color:white}
+.card p{color:var(--muted);font-size:14px;line-height:1.6}
+.icon{font-size:30px}
+form{display:grid;gap:13px}
+label{font-size:13px;color:#d6e6f5}
 input,select,textarea{
- display:block;
- width:100%;
- padding:13px;
- margin:10px 0;
- border-radius:8px;
- border:1px solid #8aa8c5;
- font-size:16px;
+width:100%;padding:13px;border-radius:8px;
+border:1px solid #3a5877;background:#091f39;color:white;
+font-size:15px;outline:none
 }
-.offer{
- background:#0b2949;
- padding:17px;
- border-radius:10px;
- margin:15px 0;
- border:1px solid #315879;
+input:focus,select:focus,textarea:focus{border-color:var(--cyan)}
+select option{background:#102c4c}
+textarea{min-height:90px;resize:vertical}
+.field{display:grid;gap:6px}
+.searchbox{background:#102c4c;padding:24px;border-radius:16px;
+border:1px solid var(--line)}
+.results{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px;margin-top:22px}
+.job{background:#102c4c;border:1px solid var(--line);padding:20px;border-radius:13px}
+.job h3{margin-bottom:8px}
+.job p{color:var(--muted);font-size:14px;margin:5px 0}
+.pill{display:inline-block;background:#193e5c;padding:5px 9px;
+border-radius:20px;font-size:11px;margin:5px 3px 5px 0;color:var(--cyan)}
+.notice{background:#173e43;border:1px solid #2d807b;padding:15px;border-radius:9px;margin:15px 0;color:#bdf8e9}
+.hidden{display:none!important}
+footer{padding:35px 7%;background:#041225;color:var(--muted);text-align:center;font-size:13px}
+hr{border:0;border-top:1px solid var(--line);margin:22px 0}
+.modal{
+position:fixed;inset:0;background:#000b;z-index:50;
+display:none;align-items:center;justify-content:center;padding:15px
 }
-.badge{
- display:inline-block;
- padding:6px 10px;
- border-radius:20px;
- font-size:12px;
- font-weight:bold;
- margin:7px 0;
-}
-.verified{background:#126c49;color:#a9ffcf}
-.pending{background:#74551a;color:#ffe19a}
-.demo{background:#62428b;color:#ead5ff}
-.small{font-size:13px;color:#c0d4e8}
-.hidden{display:none}
-footer{
- text-align:center;
- padding:25px;
- color:#9cb6d0;
+.modal.show{display:flex}
+.modal-content{background:#102c4c;border:1px solid var(--line);
+border-radius:16px;padding:25px;max-width:520px;width:100%;
+max-height:90vh;overflow:auto}
+.close{float:right;background:none;border:0;color:white;font-size:25px;cursor:pointer}
+.small{font-size:12px;color:var(--muted)}
+@media(max-width:650px){
+header{justify-content:center}
+nav{justify-content:center}
+.hero{padding:65px 6%;min-height:430px}
+section{padding:48px 6%}
+.hero:after{right:-180px}
 }
 </style>
 </head>
-
 <body>
 
 <header>
- <div class="logo">SEASONGO</div>
- <h2>Vivre sa saison autrement</h2>
- <p>Emploi • Logement • Rencontres • Bons plans</p>
+<div class="logo">SEASON<span>GO</span></div>
+<nav>
+<button onclick="go('accueil')">Accueil</button>
+<button onclick="go('recherche')">Emplois</button>
+<button onclick="go('confiance')">Confiance</button>
+<button onclick="go('employeur')">Employeurs</button>
+<button onclick="go('communaute')">Communauté</button>
+</nav>
 </header>
 
-<nav>
- <button onclick="show('home')">Accueil</button>
- <button onclick="show('search')">Trouver un emploi</button>
- <button onclick="show('verification')">Employeurs vérifiés</button>
-</nav>
-
 <main>
+<div class="hero" id="accueil">
+<div class="hero-content">
+<span class="tag">LA NOUVELLE EXPÉRIENCE SAISONNIÈRE</span>
+<h1>Ta saison.<br>Ton aventure.<br><span>Ton SeasonGo.</span></h1>
+<p>Le travail saisonnier autrement. Trouve ton emploi, découvre ta destination et rencontre ta future équipe.</p>
+<button class="btn" onclick="go('recherche')">Trouver ma saison →</button>
+<button class="btn outline dark" onclick="go('employeur')">Je recrute</button>
+</div>
+</div>
 
-<section id="home">
- <div class="card">
-  <h2>Bienvenue sur SEASONGO !</h2>
-  <p>La plateforme pensée pour les travailleurs saisonniers.</p>
-  <p>Des offres d'emploi, du logement et une communauté pour vivre pleinement ta saison.</p>
-  <button onclick="show('search')">Découvrir les offres</button>
- </div>
-
- <div class="card">
-  <h2>🛡️ Notre engagement confiance</h2>
-  <p>Notre objectif : lutter contre les fausses annonces et les employeurs frauduleux.</p>
-  <button onclick="show('verification')">Découvrir notre système</button>
- </div>
+<section>
+<h2 class="section-title">Bienvenue dans une nouvelle façon de vivre sa saison.</h2>
+<p class="subtitle">Un seul espace pour préparer, vivre et profiter pleinement de ton expérience saisonnière.</p>
+<div class="grid">
+<div class="card"><div class="icon">💼</div><h3>Emploi saisonnier</h3><p>Recherche des offres selon ton métier, ta destination et tes critères.</p></div>
+<div class="card"><div class="icon">🛡️</div><h3>SEASONGO Confiance</h3><p>Une démarche de vérification des employeurs pour renforcer la sécurité.</p></div>
+<div class="card"><div class="icon">🌍</div><h3>Compagnon géographique</h3><p>Prépare ton arrivée et découvre les possibilités autour de ta station.</p></div>
+<div class="card"><div class="icon">🤝</div><h3>Communauté</h3><p>Rencontre d'autres saisonniers, partage tes expériences et organise tes trajets.</p></div>
+<div class="card"><div class="icon">🎿</div><h3>Bons plans</h3><p>Découvre les activités, sorties et avantages de ta destination.</p></div>
+<div class="card"><div class="icon">💰</div><h3>Budget saison</h3><p>Estime tes dépenses et prépare ton objectif d'épargne.</p></div>
+</div>
 </section>
 
-<section id="search" class="hidden">
- <div class="card">
-  <h2>🔎 Recherche saisonnière</h2>
-
-  <label>Métier recherché</label>
-  <input id="job" placeholder="Ex : Serveur, cuisinier, barman">
-
-  <label>Destination</label>
-  <input id="place" placeholder="Ex : Tignes, Avoriaz, Megève">
-
-  <label>Logement</label>
-  <select id="housing">
-   <option value="all">Avec ou sans logement</option>
-   <option value="yes">Logement obligatoire</option>
-  </select>
-
-  <button onclick="searchOffers()">Lancer la recherche</button>
- </div>
-
- <div id="results"></div>
+<section id="recherche">
+<h2 class="section-title">🔎 Trouve ton prochain emploi</h2>
+<p class="subtitle">Des critères simples pour trouver une saison qui te correspond.</p>
+<div class="searchbox">
+<form id="searchForm">
+<div class="grid">
+<div class="field">
+<label>Métier recherché</label>
+<input id="metier" placeholder="Ex : Serveur, cuisinier, barman...">
+</div>
+<div class="field">
+<label>Destination</label>
+<input id="destination" placeholder="Ex : Tignes, Megève, Avoriaz...">
+</div>
+<div class="field">
+<label>Logement</label>
+<select id="logement">
+<option value="tous">Indifférent</option>
+<option value="oui">Logement obligatoire</option>
+<option value="non">Sans logement obligatoire</option>
+</select>
+</div>
+<div class="field">
+<label>Rémunération minimum (€ brut/mois)</label>
+<input id="salaire" type="number" placeholder="Ex : 1800">
+</div>
+</div>
+<button class="btn" type="submit">Lancer la recherche →</button>
+</form>
+</div>
+<div id="searchSummary" class="notice hidden"></div>
+<div id="results" class="results"></div>
 </section>
 
-<section id="verification" class="hidden">
- <div class="card">
-  <h2>🛡️ La confiance SEASONGO</h2>
-  <p>Nous voulons mettre fin aux annonces douteuses et aux fausses offres d'emploi.</p>
-
-  <h3>Comment fonctionne la vérification ?</h3>
-  <p>Chaque employeur devra pouvoir justifier son identité professionnelle.</p>
-
-  <ul>
-   <li>Vérification de l'identité de l'entreprise.</li>
-   <li>Contrôle du SIRET ou de l'immatriculation équivalente.</li>
-   <li>Vérification des coordonnées professionnelles.</li>
-   <li>Confirmation que l'annonce est bien publiée par l'employeur.</li>
-   <li>Contrôle des informations relatives au poste et au logement.</li>
-  </ul>
-
-  <p><span class="badge verified">✓ Employeur vérifié</span> Identité et annonce contrôlées.</p>
-  <p><span class="badge pending">En attente</span> Vérification non terminée.</p>
-  <p><span class="badge demo">Démonstration</span> Annonce fictive de test.</p>
- </div>
-
- <div class="card">
-  <h2>🏢 Devenir un employeur vérifié</h2>
-  <p>Vous recrutez des saisonniers ? Rejoignez SEASONGO.</p>
-
-  <form id="employerForm">
-   <input id="company" placeholder="Nom de l'établissement" required>
-   <input id="manager" placeholder="Nom du responsable" required>
-   <input id="siret" placeholder="Numéro SIRET ou immatriculation" required>
-   <input id="email" type="email" placeholder="Adresse e-mail professionnelle" required>
-   <input id="city" placeholder="Ville et station" required>
-
-   <button type="submit">Demander une vérification</button>
-  </form>
-
-  <p class="small">Démonstration : aucune donnée n'est envoyée ni vérifiée pour le moment.</p>
-  <div id="confirmation"></div>
- </div>
+<section id="confiance">
+<h2 class="section-title">🛡️ SEASONGO CONFIANCE</h2>
+<p class="subtitle">La confiance doit devenir la norme du travail saisonnier.</p>
+<div class="grid">
+<div class="card">
+<div class="icon">🏢</div>
+<h3>Employeurs identifiés</h3>
+<p>Collecte des informations légales de l'entreprise et vérification de son identité.</p>
+</div>
+<div class="card">
+<div class="icon">🔐</div>
+<h3>Protection des saisonniers</h3>
+<p>Un espace destiné à réduire les risques de fausses annonces et d'usurpation d'identité.</p>
+</div>
+<div class="card">
+<div class="icon">✅</div>
+<h3>Badge de confiance</h3>
+<p>Les entreprises validées pourront bénéficier d'un badge après contrôle effectif.</p>
+</div>
+</div>
+<div class="notice">Important : un formulaire rempli ne constitue pas une vérification officielle. Le badge ne sera attribué qu'après contrôle réel des informations par SEASONGO.</div>
 </section>
 
+<section id="employeur">
+<h2 class="section-title">🏢 Espace employeur</h2>
+<p class="subtitle">Recrute tes futurs collaborateurs saisonniers.</p>
+<div class="card">
+<h3>Demander la vérification de mon établissement</h3>
+<form id="verifyForm">
+<div class="field"><label>Nom de l'établissement</label><input id="entreprise" required placeholder="Nom de votre établissement"></div>
+<div class="field"><label>Nom du responsable</label><input id="responsable" required placeholder="Votre nom"></div>
+<div class="field"><label>Adresse e-mail professionnelle</label><input id="emailPro" type="email" required placeholder="contact@entreprise.fr"></div>
+<div class="field"><label>Numéro SIRET (14 chiffres)</label><input id="siret" required maxlength="14" inputmode="numeric" placeholder="12345678901234"></div>
+<div class="field"><label>Destination</label><input id="ville" required placeholder="Ville / Station"></div>
+<button class="btn gold" type="submit">Soumettre ma demande</button>
+</form>
+<div id="verifyResult"></div>
+<hr>
+<h3>Publier une offre d'emploi</h3>
+<form id="jobForm">
+<div class="field"><label>Nom de l'établissement</label><input id="jobEntreprise" required></div>
+<div class="field"><label>Poste proposé</label><input id="jobMetier" required placeholder="Ex : Chef de rang"></div>
+<div class="field"><label>Destination</label><input id="jobVille" required></div>
+<div class="field"><label>Salaire brut mensuel (€)</label><input id="jobSalaire" type="number" required></div>
+<div class="field"><label>Logement</label><select id="jobLogement"><option value="oui">Fourni</option><option value="non">Non fourni</option></select></div>
+<div class="field"><label>Description</label><textarea id="jobDescription" required></textarea></div>
+<button class="btn" type="submit">Ajouter l'offre</button>
+</form>
+</div>
+</section>
+
+<section id="communaute">
+<h2 class="section-title">🌍 La communauté SEASONGO</h2>
+<p class="subtitle">Parce qu'une saison, c'est aussi des rencontres.</p>
+<div class="grid">
+<div class="card"><div class="icon">💬</div><h3>Chat international</h3><p>Un espace d'échange pour les saisonniers de toutes les destinations.</p><span class="pill">Fonctionnalité à connecter</span></div>
+<div class="card"><div class="icon">🚗</div><h3>Covoiturage</h3><p>Propose ou recherche un trajet pour rejoindre ta station.</p><span class="pill">Fonctionnalité à connecter</span></div>
+<div class="card"><div class="icon">🌐</div><h3>Traduction automatique</h3><p>Facilite les échanges entre saisonniers de différents pays.</p><span class="pill">Fonctionnalité à connecter</span></div>
+</div>
+</section>
+
+<section id="budget">
+<h2 class="section-title">💰 Ton budget saison</h2>
+<p class="subtitle">Calcule rapidement combien tu pourrais mettre de côté.</p>
+<div class="card">
+<form id="budgetForm">
+<div class="field"><label>Salaire net mensuel (€)</label><input id="revenu" type="number" value="2200"></div>
+<div class="field"><label>Dépenses mensuelles (€)</label><input id="depenses" type="number" value="450"></div>
+<div class="field"><label>Durée de la saison (mois)</label><input id="mois" type="number" value="4"></div>
+<button class="btn" type="submit">Calculer mon épargne</button>
+</form>
+<div id="budgetResult" class="notice hidden"></div>
+</div>
+</section>
 </main>
 
 <footer>
- SEASONGO © 2026 — Vivre sa saison autrement
+<div class="logo">SEASON<span style="color:var(--cyan)">GO</span></div>
+<p>Vivre sa saison autrement.</p>
+<p style="margin-top:12px">SEASONGO © 2026 — Tous droits réservés</p>
+<p style="margin-top:8px">Une nouvelle génération de services pour les saisonniers.</p>
 </footer>
 
-<script>
+<div class="modal" id="modal">
+<div class="modal-content">
+<button class="close" onclick="closeModal()">×</button>
+<div id="modalBody"></div>
+</div>
+</div>
 
-const offers = [
- {
-  job:"Serveur",
-  place:"Tignes",
-  housing:true,
-  company:"Restaurant des Sommets",
-  description:"Poste de serveur pour la saison d'hiver. Logement fourni.",
-  demo:true
- },
- {
-  job:"Cuisinier",
-  place:"Avoriaz",
-  housing:true,
-  company:"Auberge des Neiges",
-  description:"Recherche cuisinier pour la saison hivernale. Logement fourni.",
-  demo:true
- },
- {
-  job:"Barman",
-  place:"Megève",
-  housing:false,
-  company:"Le Bar des Alpes",
-  description:"Poste de barman en station pour la saison.",
-  demo:true
- }
+<script>
+let jobs=[
+{id:1,entreprise:"La Flèche d'Or",metier:"Chef de rang",ville:"Saint-Gervais",salaire:2700,logement:"oui",description:"Restaurant situé au pied des pistes. Clientèle internationale. Hébergement et repas fournis. Contrat saisonnier."},
+{id:2,entreprise:"Brasserie des Alpes",metier:"Serveur",ville:"Tignes",salaire:2100,logement:"oui",description:"Recherche serveur motivé pour la saison d'hiver. Équipe dynamique. Logement fourni."},
+{id:3,entreprise:"Restaurant du Sommet",metier:"Cuisinier",ville:"Avoriaz",salaire:2300,logement:"oui",description:"Poste en cuisine pour la saison d'hiver. Expérience souhaitée."}
 ];
 
-function show(section){
- document.querySelectorAll("main section").forEach(s=>{
-  s.classList.add("hidden");
- });
- document.getElementById(section).classList.remove("hidden");
- window.scrollTo(0,0);
+function go(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
-
-function searchOffers(){
- const job=document.getElementById("job").value.toLowerCase().trim();
- const place=document.getElementById("place").value.toLowerCase().trim();
- const housing=document.getElementById("housing").value;
-
- const filtered=offers.filter(o=>
-  (!job || o.job.toLowerCase().includes(job)) &&
-  (!place || o.place.toLowerCase().includes(place)) &&
-  (housing!=="yes" || o.housing)
- );
-
- const results=document.getElementById("results");
-
- if(filtered.length===0){
-  results.innerHTML='<div class="card"><h2>Aucun résultat</h2><p>Essaie de modifier tes critères de recherche.</p></div>';
-  return;
- }
-
- results.innerHTML=filtered.map((o,i)=>`
-  <div class="offer">
-   <h3>${o.job} — ${o.place}</h3>
-   <span class="badge demo">Annonce de démonstration</span>
-   <p><strong>${o.company}</strong></p>
-   <p>${o.description}</p>
-   <p>Logement : ${o.housing?"Fourni":"Non indiqué"}</p>
-   <p class="small">Employeur non encore vérifié.</p>
-   <button onclick="showDetails('${offers.indexOf(o)}')">Voir les détails</button>
-  </div>
- `).join("");
-}
-
-function showDetails(index){
- const o=offers[index];
- const results=document.getElementById("results");
-
- results.innerHTML=`
- <div class="card">
-  <h2>${o.job} — ${o.place}</h2>
-  <span class="badge demo">Annonce de démonstration</span>
-  <p>Établissement : ${o.company}</p>
-  <p>${o.description}</p>
-  <p>Logement : ${o.housing?"Fourni":"Non indiqué"}</p>
-  <p>Statut : employeur non vérifié.</p>
-  <button onclick="alert('Fonctionnalité de candidature à connecter prochainement.')">Postuler</button>
-  <button onclick="searchOffers()">Retour aux offres</button>
- </div>`;
-}
-
-document.getElementById("employerForm").addEventListener("submit",function(e){
- e.preventDefault();
- document.getElementById("confirmation").innerHTML=
- '<p class="badge pending">Demande de démonstration enregistrée sur cette page.</p><p>La vérification réelle sera disponible après connexion au serveur SEASONGO.</p>';
- this.reset();
+function escapeHTML(value){
+return String(value).replace(/[&<>"']/g,function(c){
+return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
 });
-
+}
+function showJobs(list){
+const area=document.getElementById("results");
+area.innerHTML="";
+if(!list.length){
+area.innerHTML='<div class="card">Aucune offre ne correspond à ces critères. Essaie d'élargir ta recherche.</div>';
+return;
+}
+list.forEach(job=>{
+const el=document.createElement("div");
+el.className="job";
+el.innerHTML=`
+<span class="pill">${job.logement==="oui"?"Logement fourni":"Sans logement fourni"}</span>
+<h3>${escapeHTML(job.metier)}</h3>
+<p>📍 ${escapeHTML(job.ville)}</p>
+<p>🏢 ${escapeHTML(job.entreprise)}</p>
+<p>💶 ${job.salaire} € brut / mois</p>
+<button class="btn" onclick="details(${job.id})">Voir l'offre</button>`;
+area.appendChild(el);
+});
+}
+document.getElementById("searchForm").addEventListener("submit",function(e){
+e.preventDefault();
+const m=document.getElementById("metier").value.trim().toLowerCase();
+const d=document.getElementById("destination").value.trim().toLowerCase();
+const l=document.getElementById("logement").value;
+const s=Number(document.getElementById("salaire").value)||0;
+const filtered=jobs.filter(j=>
+(!m||j.metier.toLowerCase().includes(m))&&
+(!d||j.ville.toLowerCase().includes(d))&&
+(l==="tous"||j.logement===l)&&
+j.salaire>=s
+);
+const summary=document.getElementById("searchSummary");
+summary.classList.remove("hidden");
+summary.textContent="Recherche : "+(m||"Tous métiers")+" | "+(d||"Toutes destinations")+" | "+(l==="oui"?"Logement fourni":l==="non"?"Sans logement obligatoire":"Tous logements")+" | "+filtered.length+" offre(s) trouvée(s).";
+showJobs(filtered);
+});
+function details(id){
+const j=jobs.find(x=>x.id===id);
+if(!j)return;
+document.getElementById("modalBody").innerHTML=`
+<h2>${escapeHTML(j.metier)}</h2>
+<p style="margin:12px 0;color:var(--cyan)">${escapeHTML(j.entreprise)}</p>
+<p>📍 ${escapeHTML(j.ville)}</p>
+<p>💶 ${j.salaire} € brut / mois</p>
+<p>🏠 ${j.logement==="oui"?"Logement fourni":"Logement non fourni"}</p>
+<hr>
+<p>${escapeHTML(j.description)}</p>
+<br>
+<button class="btn" onclick="apply(${j.id})">Postuler à cette offre</button>`;
+document.getElementById("modal").classList.add("show");
+}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function apply(id){
+const j=jobs.find(x=>x.id===id);
+document.getElementById("modalBody").innerHTML=`
+<h2>📩 Candidature</h2>
+<p>Poste : ${escapeHTML(j.metier)} – ${escapeHTML(j.entreprise)}</p>
+<form id="applyForm">
+<div class="field"><label>Nom et prénom</label><input required id="appName"></div>
+<div class="field"><label>Adresse e-mail</label><input type="email" required id="appEmail"></div>
+<div class="field"><label>Message de motivation</label><textarea required id="appMessage"></textarea></div>
+<button class="btn" type="submit">Préparer ma candidature</button>
+</form>
+<p class="small">Cette démonstration ne transmet pas encore la candidature à l'employeur.</p>`;
+document.getElementById("applyForm").addEventListener("submit",function(e){
+e.preventDefault();
+const name=document.getElementById("appName").value;
+const email=document.getElementById("appEmail").value;
+const msg=document.getElementById("appMessage").value;
+const subject="Candidature – "+j.metier;
+const body="Nom : "+name+"\nEmail : "+email+"\nMessage : "+msg;
+document.getElementById("modalBody").innerHTML=`
+<h2>Votre candidature est prête !</h2>
+<p>Vous pouvez copier votre message pour le transmettre à l'établissement.</p>
+<button class="btn" onclick="copyText(${JSON.stringify(subject+"\n\n"+body)})">Copier ma candidature</button>
+<p class="small">La candidature n'a pas encore été envoyée.</p>`;
+});
+}
+function copyText(t){
+if(navigator.clipboard&&navigator.clipboard.writeText){
+navigator.clipboard.writeText(t).then(()=>alert("Texte copié !")).catch(()=>alert(t));
+}else{alert(t)}
+}
+document.getElementById("verifyForm").addEventListener("submit",function(e){
+e.preventDefault();
+const s=document.getElementById("siret").value.trim();
+if(!/^[0-9]{14}$/.test(s)){
+alert("Le SIRET doit comporter exactement 14 chiffres.");
+return;
+}
+const request={
+entreprise:document.getElementById("entreprise").value,
+responsable:document.getElementById("responsable").value,
+email:document.getElementById("emailPro").value,
+siret:s,ville:document.getElementById("ville").value,
+date:new Date().toISOString()
+};
+let requests=JSON.parse(localStorage.getItem("seasongo_verifications")||"[]");
+requests.push(request);
+localStorage.setItem("seasongo_verifications",JSON.stringify(requests));
+document.getElementById("verifyResult").innerHTML=
+'<div class="notice">Demande enregistrée sur cet appareil. Statut : en attente de vérification officielle.</div>';
+this.reset();
+});
+document.getElementById("jobForm").addEventListener("submit",function(e){
+e.preventDefault();
+const job={
+id:Date.now(),
+entreprise:document.getElementById("jobEntreprise").value,
+metier:document.getElementById("jobMetier").value,
+ville:document.getElementById("jobVille").value,
+salaire:Number(document.getElementById("jobSalaire").value),
+logement:document.getElementById("jobLogement").value,
+description:document.getElementById("jobDescription").value
+};
+jobs.push(job);
+localStorage.setItem("seasongo_jobs",JSON.stringify(jobs));
+alert("Offre ajoutée à la démonstration !");
+this.reset();
+});
+document.getElementById("budgetForm").addEventListener("submit",function(e){
+e.preventDefault();
+const r=Number(document.getElementById("revenu").value);
+const d=Number(document.getElementById("depenses").value);
+const m=Number(document.getElementById("mois").value);
+if(r<0||d<0||m<=0){alert("Vérifie tes chiffres.");return}
+const total=(r-d)*m;
+const box=document.getElementById("budgetResult");
+box.classList.remove("hidden");
+box.innerHTML="Épargne mensuelle estimée : <strong>"+(r-d).toLocaleString("fr-FR")+" €</strong><br>Épargne totale estimée : <strong>"+total.toLocaleString("fr-FR")+" €</strong>";
+});
+try{
+const saved=JSON.parse(localStorage.getItem("seasongo_jobs")||"[]");
+saved.forEach(j=>{if(!jobs.some(x=>x.id===j.id))jobs.push(j)});
+}catch(e){}
 </script>
 </body>
 </html>
