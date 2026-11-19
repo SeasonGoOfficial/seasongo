@@ -4,129 +4,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SEASONGO – Vivre sa saison autrement</title>
+<title>SEASONGO</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#07172f;color:white}
-header{padding:22px 18px;text-align:center;background:#102d55}
-.logo{font-size:34px;font-weight:900;letter-spacing:2px;color:#35c5ff}
-.logo span{color:white}
-.slogan{margin-top:7px;color:#b9d9f4;font-size:14px}
-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;padding:14px;background:#0b2040}
-nav a{color:white;text-decoration:none;font-size:13px;padding:9px}
-.hero{text-align:center;padding:48px 20px 35px;background:linear-gradient(145deg,#123d70,#087db5)}
-.hero h1{font-size:30px;line-height:1.2;margin-bottom:15px}
-.hero p{font-size:16px;line-height:1.6;color:#e1f4ff}
-.search{margin:23px auto 0;max-width:440px}
-.search input{width:100%;padding:15px;border:0;border-radius:9px;font-size:15px}
-.btn{display:inline-block;background:#31c5ff;color:#06213d;padding:13px 23px;border-radius:9px;text-decoration:none;font-weight:bold;margin-top:12px;border:0}
-section{padding:30px 18px}
-h2{text-align:center;font-size:23px;margin-bottom:22px;color:#49caff}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.card{background:#102b4e;padding:19px 12px;border-radius:13px;text-align:center;border:1px solid #244c73}
-.card .emoji{font-size:30px;margin-bottom:12px}
-.card h3{font-size:15px;margin-bottom:8px}
-.card p{font-size:12px;line-height:1.5;color:#c4d8eb}
-.full{grid-column:1/-1}
-.highlight{background:#103d62;border-radius:14px;padding:25px;text-align:center;line-height:1.7}
-.highlight h2{margin-bottom:12px}
-footer{text-align:center;background:#061126;padding:25px 15px;color:#9eb8d1;font-size:12px;line-height:2}
-a{cursor:pointer}
-@media(min-width:650px){.cards{grid-template-columns:repeat(3,1fr)}.hero h1{font-size:42px}}
+*{box-sizing:border-box}
+body{margin:0;background:#07152e;color:white;font-family:Arial,sans-serif}
+header{text-align:center;padding:25px 15px;background:#102b50}
+.logo{font-size:35px;font-weight:bold;color:#42d9ff}
+header p{color:#c8eaff}
+main{padding:18px;max-width:650px;margin:auto}
+h2{color:#42d9ff}
+.card{background:#13294a;padding:18px;border-radius:15px;margin:15px 0}
+input,select{width:100%;padding:14px;margin:8px 0;border:0;border-radius:8px;font-size:16px}
+button{background:#12bce5;color:#06152d;border:0;padding:14px;border-radius:9px;font-weight:bold;font-size:16px;width:100%;margin-top:10px}
+nav{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+nav button{background:#203d63;color:white}
+.result{border-bottom:1px solid #456080;padding:12px 0}
+.small{color:#a9c7e5;font-size:13px}
 </style>
 </head>
 <body>
-
 <header>
-<div class="logo">SEASON<span>GO</span> 🌍</div>
-<div class="slogan">Vivre sa saison autrement</div>
+<div class="logo">SEASONGO</div>
+<p>Vivre sa saison autrement ❄️</p>
+<p>Le monde des saisonniers, enfin réuni !</p>
 </header>
 
+<main>
+<div class="card">
+<h2>🔎 Trouve ton emploi saisonnier</h2>
+<input id="job" placeholder="Métier recherché (serveur, cuisinier...)">
+<input id="place" placeholder="Station ou ville souhaitée">
+<select id="housing">
+<option value="">Logement : indifférent</option>
+<option value="yes">Logement fourni obligatoire</option>
+</select>
+<button onclick="searchJobs()">LANCER LA RECHERCHE</button>
+<div id="results"></div>
+</div>
+
+<h2>🌍 Explore SEASONGO</h2>
 <nav>
-<a href="#emplois">Emplois</a>
-<a href="#logement">Logement</a>
-<a href="#communaute">Communauté</a>
-<a href="#loisirs">Loisirs</a>
-<a href="#partenaires">Partenaires</a>
+<button onclick="show('verification')">🛡️ Offres vérifiées</button>
+<button onclick="show('budget')">💰 Mon budget</button>
+<button onclick="show('geo')">📍 Compagnon géographique</button>
+<button onclick="show('sorties')">🎉 Sorties en station</button>
+<button onclick="show('chat')">💬 Communauté</button>
+<button onclick="show('bonsplans')">🎿 Bons plans</button>
 </nav>
-
-<div class="hero">
-<h1>Ta saison commence ici !</h1>
-<p>Le premier univers pensé pour les travailleurs saisonniers.<br>
-Trouve ton emploi, ton logement et tes futurs amis.</p>
-<div class="search">
-<input id="recherche" type="text" placeholder="Quel emploi ou quelle station recherches-tu ?">
-<button class="btn" onclick="chercher()">Lancer ma recherche</button>
-<p id="resultat" style="margin-top:12px"></p>
+<div class="card" id="info">
+<h2>Bienvenue sur SEASONGO !</h2>
+<p>Ta prochaine saison commence ici.</p>
 </div>
-</div>
-
-<section id="emplois">
-<h2>💼 Trouve ton prochain emploi</h2>
-<div class="cards">
-<div class="card"><div class="emoji">🍽️</div><h3>Restauration</h3><p>Serveur, chef de rang, barman, cuisinier...</p></div>
-<div class="card"><div class="emoji">🏔️</div><h3>Montagne</h3><p>Stations de ski, remontées mécaniques, hôtels...</p></div>
-<div class="card"><div class="emoji">☀️</div><h3>Saison estivale</h3><p>Camping, tourisme, plage et loisirs.</p></div>
-<div class="card"><div class="emoji">🛡️</div><h3>Employeurs vérifiés</h3><p>Un espace dédié à la vérification des annonces et des recruteurs.</p></div>
-</div>
-</section>
-
-<section id="logement">
-<h2>🏠 Ton logement pour la saison</h2>
-<div class="highlight">
-<p>Parce qu'un saisonnier mérite de travailler dans de bonnes conditions.</p>
-<p>Recherche un logement, une colocation ou une chambre directement liée à ta destination.</p>
-</div>
-</section>
-
-<section id="communaute">
-<h2>🤝 La communauté SEASONGO</h2>
-<div class="cards">
-<div class="card"><div class="emoji">💬</div><h3>Chat international</h3><p>Échange avec les saisonniers du monde entier.</p></div>
-<div class="card"><div class="emoji">🌍</div><h3>Traduction automatique</h3><p>Communique sans barrière de langue.</p></div>
-<div class="card"><div class="emoji">🚗</div><h3>Covoiturage</h3><p>Partage tes trajets et trouve des compagnons de route.</p></div>
-<div class="card"><div class="emoji">❤️</div><h3>Entraide</h3><p>Conseils, rencontres et bons plans entre saisonniers.</p></div>
-</div>
-</section>
-
-<section id="loisirs">
-<h2>🎿 Profite de ta saison !</h2>
-<div class="cards">
-<div class="card"><div class="emoji">🎉</div><h3>Sorties et soirées</h3><p>Découvre ce qui se passe dans ta station.</p></div>
-<div class="card"><div class="emoji">🎿</div><h3>Activités</h3><p>Ski, randonnées, sports et découvertes.</p></div>
-<div class="card full"><div class="emoji">💰</div><h3>Bons plans et petits budgets</h3><p>Des activités et sorties adaptées à ton budget.</p></div>
-</div>
-</section>
-
-<section id="partenaires">
-<h2>🏢 Espace employeurs et partenaires</h2>
-<div class="highlight">
-<h3>Recrutez autrement avec SEASONGO</h3>
-<p>Diffusez vos offres, valorisez votre établissement et rencontrez des saisonniers.</p>
-<a class="btn" href="mailto:contact@seasongo.fr">Devenir partenaire</a>
-</div>
-</section>
-
-<footer>
-<strong>SEASONGO 🌍</strong><br>
-Vivre sa saison autrement.<br>
-Emploi • Confiance • Entraide • Liberté<br>
-© 2026 SEASONGO
-</footer>
+<p class="small">SEASONGO – La confiance avant tout. Les offres affichées devront être vérifiées avant publication.</p>
+</main>
 
 <script>
-function chercher(){
-const valeur=document.getElementById('recherche').value.trim();
-const resultat=document.getElementById('resultat');
-if(!valeur){
-resultat.textContent="Indique un métier ou une destination pour commencer.";
-}else{
-resultat.textContent="Ta recherche « "+valeur+" » sera bientôt disponible sur SEASONGO !";
+function searchJobs(){
+let job=document.getElementById('job').value.trim();
+let place=document.getElementById('place').value.trim();
+let housing=document.getElementById('housing').value;
+let results=document.getElementById('results');
+
+if(!job&&!place){
+results.innerHTML='<p>Indique un métier ou une destination pour commencer.</p>';
+return;
 }
+
+let query=[job,place,housing==='yes'?'logement fourni':''].filter(Boolean).join(' ');
+let url='https://www.google.com/search?q='+encodeURIComponent('emploi saisonnier '+query);
+
+results.innerHTML='<p>Recherche préparée pour : <b>'+query+'</b></p><button onclick="window.open(\''+url+'\',\'_blank\')">VOIR LES OFFRES DISPONIBLES</button><p class="small">Les résultats externes ne sont pas encore vérifiés par SEASONGO.</p>';
+}
+
+function show(section){
+let content={
+verification:['🛡️','La confiance avant tout','Notre objectif : vérifier l’identité des employeurs et l’authenticité de chaque annonce.'],
+budget:['💰','Ton budget saison','Bientôt : estime ton salaire, tes dépenses et tes économies possibles.'],
+geo:['📍','Compagnon géographique','Retrouve les informations utiles autour de ta future station.'],
+sorties:['🎉','La vie en station','Découvre les soirées, événements et activités près de toi.'],
+chat:['💬','Communauté SEASONGO','Un espace pour échanger, partager des conseils et organiser du covoiturage.'],
+bonsplans:['🎿','Bons plans','Retrouve les avantages et réductions pour les saisonniers.']
+};
+let c=content[section];
+document.getElementById('info').innerHTML='<h2>'+c[0]+' '+c[1]+'</h2><p>'+c[2]+'</p>';
 }
 </script>
-
 </body>
 </html>
-
-
