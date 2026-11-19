@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,11 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#071a35">
 <title>SEASONGO | Vivre sa saison autrement</title>
+
 <style>
 :root{
 --bg:#071a35;--panel:#102c4c;--cyan:#35d5d7;
 --gold:#ffc65a;--white:#fff;--muted:#a9bed3;
---line:#284563;--green:#38d996;
+--line:#284563;--green:#38d996;--red:#ff7777;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -24,8 +26,7 @@ gap:15px;flex-wrap:wrap
 .logo{font-size:26px;font-weight:900;letter-spacing:2px}
 .logo span{color:var(--cyan)}
 nav{display:flex;gap:8px;flex-wrap:wrap}
-nav button{background:none;border:0;color:white;padding:9px;
-cursor:pointer;font-size:13px}
+nav button{background:none;border:0;color:white;padding:9px;cursor:pointer;font-size:13px}
 nav button:hover{color:var(--cyan)}
 .hero{
 padding:85px 7%;min-height:490px;display:flex;
@@ -36,12 +37,10 @@ position:relative;overflow:hidden
 .hero:after{
 content:"";position:absolute;width:300px;height:300px;
 border:1px solid #ffffff30;border-radius:50%;
-right:8%;top:20%;box-shadow:0 0 0 40px #ffffff08,
-0 0 0 80px #ffffff05
+right:8%;top:20%;box-shadow:0 0 0 40px #ffffff08,0 0 0 80px #ffffff05
 }
 .hero-content{max-width:650px;position:relative;z-index:2}
-.tag{display:inline-block;border:1px solid var(--cyan);
-color:var(--cyan);padding:7px 14px;border-radius:30px;font-size:12px}
+.tag{display:inline-block;border:1px solid var(--cyan);color:var(--cyan);padding:7px 14px;border-radius:30px;font-size:12px}
 h1{font-size:clamp(40px,7vw,68px);line-height:1.08;margin:22px 0}
 h1 span{color:var(--cyan)}
 .hero p{font-size:18px;color:#d2e1f1;margin-bottom:25px}
@@ -52,13 +51,13 @@ cursor:pointer;margin:4px
 }
 .btn.gold{background:var(--gold)}
 .btn.dark{background:#24486b;color:white}
+.btn.red{background:#8e3542;color:white}
 .btn:hover{filter:brightness(1.12)}
 section{padding:65px 7%;scroll-margin-top:90px}
 .section-title{font-size:30px;margin-bottom:12px}
 .subtitle{color:var(--muted);margin-bottom:28px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:var(--panel);border:1px solid var(--line);
-border-radius:15px;padding:22px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:22px}
 .card h3{margin:10px 0;color:white}
 .card p{color:var(--muted);font-size:14px;line-height:1.6}
 .icon{font-size:30px}
@@ -66,22 +65,33 @@ form{display:grid;gap:13px}
 label{font-size:13px;color:#d6e6f5}
 input,select,textarea{
 width:100%;padding:13px;border-radius:8px;
-border:1px solid #3a5877;background:#091f39;color:white;
-font-size:15px;outline:none
+border:1px solid #3a5877;background:#091f39;color:white;font-size:15px;outline:none
 }
 input:focus,select:focus,textarea:focus{border-color:var(--cyan)}
 select option{background:#102c4c}
 textarea{min-height:90px;resize:vertical}
 .field{display:grid;gap:6px}
-.searchbox{background:#102c4c;padding:24px;border-radius:16px;
-border:1px solid var(--line)}
+.searchbox{background:#102c4c;padding:24px;border-radius:16px;border:1px solid var(--line)}
 .results{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px;margin-top:22px}
 .job{background:#102c4c;border:1px solid var(--line);padding:20px;border-radius:13px}
-.job h3{margin-bottom:8px}
-.job p{color:var(--muted);font-size:14px;margin:5px 0}
-.pill{display:inline-block;background:#193e5c;padding:5px 9px;
-border-radius:20px;font-size:11px;margin:5px 3px 5px 0;color:var(--cyan)}
-.notice{background:#173e43;border:1px solid #2d807b;padding:15px;border-radius:9px;margin:15px 0;color:#bdf8e9}
+.job h3{margin:12px 0 8px}
+.job p{color:var(--muted);font-size:14px;margin:7px 0}
+.pill{display:inline-block;background:#193e5c;padding:5px 9px;border-radius:20px;font-size:11px;margin:5px 3px 5px 0;color:var(--cyan)}
+.badge-verified{
+display:inline-block;background:#124c3b;color:#8ff2c6;
+border:1px solid #38d996;padding:6px 10px;border-radius:20px;
+font-size:11px;font-weight:bold;margin:5px 0
+}
+.badge-pending{
+display:inline-block;background:#554522;color:#ffdc8a;
+padding:6px 10px;border-radius:20px;font-size:11px
+}
+.badge-refused{
+display:inline-block;background:#542d36;color:#ffaaaa;
+padding:6px 10px;border-radius:20px;font-size:11px
+}
+.notice{background:#173e43;border:1px solid #2d807b;padding:15px;border-radius:9px;margin:15px 0;color:#bdf8e9;line-height:1.6}
+.warning{background:#493c20;border:1px solid #92753c;padding:15px;border-radius:9px;margin:15px 0;color:#ffe1a0;line-height:1.6}
 .hidden{display:none!important}
 footer{padding:35px 7%;background:#041225;color:var(--muted);text-align:center;font-size:13px}
 hr{border:0;border-top:1px solid var(--line);margin:22px 0}
@@ -90,11 +100,15 @@ position:fixed;inset:0;background:#000b;z-index:50;
 display:none;align-items:center;justify-content:center;padding:15px
 }
 .modal.show{display:flex}
-.modal-content{background:#102c4c;border:1px solid var(--line);
-border-radius:16px;padding:25px;max-width:520px;width:100%;
-max-height:90vh;overflow:auto}
+.modal-content{
+background:#102c4c;border:1px solid var(--line);border-radius:16px;
+padding:25px;max-width:520px;width:100%;max-height:90vh;overflow:auto
+}
 .close{float:right;background:none;border:0;color:white;font-size:25px;cursor:pointer}
-.small{font-size:12px;color:var(--muted)}
+.small{font-size:12px;color:var(--muted);line-height:1.5}
+.admin-card{margin-top:14px}
+.admin-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.empty{text-align:center;padding:25px;color:var(--muted)}
 @media(max-width:650px){
 header{justify-content:center}
 nav{justify-content:center}
@@ -104,6 +118,7 @@ section{padding:48px 6%}
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -114,17 +129,19 @@ section{padding:48px 6%}
 <button onclick="go('confiance')">Confiance</button>
 <button onclick="go('employeur')">Employeurs</button>
 <button onclick="go('communaute')">Communauté</button>
+<button onclick="go('budget')">Budget</button>
 </nav>
 </header>
 
 <main>
+
 <div class="hero" id="accueil">
 <div class="hero-content">
 <span class="tag">LA NOUVELLE EXPÉRIENCE SAISONNIÈRE</span>
 <h1>Ta saison.<br>Ton aventure.<br><span>Ton SeasonGo.</span></h1>
 <p>Le travail saisonnier autrement. Trouve ton emploi, découvre ta destination et rencontre ta future équipe.</p>
 <button class="btn" onclick="go('recherche')">Trouver ma saison →</button>
-<button class="btn outline dark" onclick="go('employeur')">Je recrute</button>
+<button class="btn dark" onclick="go('employeur')">Je recrute</button>
 </div>
 </div>
 
@@ -192,37 +209,101 @@ section{padding:48px 6%}
 <div class="card">
 <div class="icon">✅</div>
 <h3>Badge de confiance</h3>
-<p>Les entreprises validées pourront bénéficier d'un badge après contrôle effectif.</p>
+<p>Les entreprises contrôlées pourront bénéficier d'un badge après vérification effective.</p>
 </div>
 </div>
-<div class="notice">Important : un formulaire rempli ne constitue pas une vérification officielle. Le badge ne sera attribué qu'après contrôle réel des informations par SEASONGO.</div>
+<div class="notice">
+Un formulaire rempli ne constitue pas une vérification officielle. Le badge définitif nécessitera un contrôle réel des informations.
+</div>
 </section>
 
 <section id="employeur">
 <h2 class="section-title">🏢 Espace employeur</h2>
 <p class="subtitle">Recrute tes futurs collaborateurs saisonniers.</p>
+
 <div class="card">
 <h3>Demander la vérification de mon établissement</h3>
+<p class="small">Présente ton établissement pour demander son contrôle par SEASONGO.</p>
+
 <form id="verifyForm">
-<div class="field"><label>Nom de l'établissement</label><input id="entreprise" required placeholder="Nom de votre établissement"></div>
-<div class="field"><label>Nom du responsable</label><input id="responsable" required placeholder="Votre nom"></div>
-<div class="field"><label>Adresse e-mail professionnelle</label><input id="emailPro" type="email" required placeholder="contact@entreprise.fr"></div>
-<div class="field"><label>Numéro SIRET (14 chiffres)</label><input id="siret" required maxlength="14" inputmode="numeric" placeholder="12345678901234"></div>
-<div class="field"><label>Destination</label><input id="ville" required placeholder="Ville / Station"></div>
+<div class="field">
+<label>Nom de l'établissement</label>
+<input id="entreprise" required placeholder="Nom de votre établissement">
+</div>
+<div class="field">
+<label>Nom du responsable</label>
+<input id="responsable" required placeholder="Votre nom">
+</div>
+<div class="field">
+<label>Adresse e-mail professionnelle</label>
+<input id="emailPro" type="email" required placeholder="contact@entreprise.fr">
+</div>
+<div class="field">
+<label>Numéro SIRET (14 chiffres)</label>
+<input id="siret" required maxlength="14" inputmode="numeric" pattern="[0-9]{14}" placeholder="12345678901234">
+</div>
+<div class="field">
+<label>Destination</label>
+<input id="ville" required placeholder="Ville / Station">
+</div>
 <button class="btn gold" type="submit">Soumettre ma demande</button>
 </form>
+
 <div id="verifyResult"></div>
+
 <hr>
+
+<h3>📋 Suivre mes demandes</h3>
+<p class="small">Les demandes enregistrées sur cet appareil sont visibles ci-dessous.</p>
+<div id="myRequests"></div>
+
+<hr>
+
+<h3>🔐 Gestion des vérifications SEASONGO</h3>
+<p class="small">Espace de démonstration locale pour gérer les demandes.</p>
+<button class="btn dark" type="button" onclick="toggleAdmin()">Ouvrir les demandes employeurs</button>
+
+<div id="adminPanel" class="hidden">
+<div class="warning">
+<strong>Attention :</strong> cet espace de gestion est une démonstration locale. Il n'est pas protégé par un compte administrateur et les données ne sont pas partagées entre les appareils. Ne l'utilise pas pour délivrer de véritables certifications.
+</div>
+<div id="adminRequests"></div>
+</div>
+
+<hr>
+
 <h3>Publier une offre d'emploi</h3>
 <form id="jobForm">
-<div class="field"><label>Nom de l'établissement</label><input id="jobEntreprise" required></div>
-<div class="field"><label>Poste proposé</label><input id="jobMetier" required placeholder="Ex : Chef de rang"></div>
-<div class="field"><label>Destination</label><input id="jobVille" required></div>
-<div class="field"><label>Salaire brut mensuel (€)</label><input id="jobSalaire" type="number" required></div>
-<div class="field"><label>Logement</label><select id="jobLogement"><option value="oui">Fourni</option><option value="non">Non fourni</option></select></div>
-<div class="field"><label>Description</label><textarea id="jobDescription" required></textarea></div>
+<div class="field">
+<label>Nom de l'établissement</label>
+<input id="jobEntreprise" required>
+</div>
+<div class="field">
+<label>Poste proposé</label>
+<input id="jobMetier" required placeholder="Ex : Chef de rang">
+</div>
+<div class="field">
+<label>Destination</label>
+<input id="jobVille" required>
+</div>
+<div class="field">
+<label>Salaire brut mensuel (€)</label>
+<input id="jobSalaire" type="number" required>
+</div>
+<div class="field">
+<label>Logement</label>
+<select id="jobLogement">
+<option value="oui">Fourni</option>
+<option value="non">Non fourni</option>
+</select>
+</div>
+<div class="field">
+<label>Description</label>
+<textarea id="jobDescription" required></textarea>
+</div>
 <button class="btn" type="submit">Ajouter l'offre</button>
 </form>
+<div id="jobResult"></div>
 </div>
 </section>
 
@@ -241,18 +322,28 @@ section{padding:48px 6%}
 <p class="subtitle">Calcule rapidement combien tu pourrais mettre de côté.</p>
 <div class="card">
 <form id="budgetForm">
-<div class="field"><label>Salaire net mensuel (€)</label><input id="revenu" type="number" value="2200"></div>
-<div class="field"><label>Dépenses mensuelles (€)</label><input id="depenses" type="number" value="450"></div>
-<div class="field"><label>Durée de la saison (mois)</label><input id="mois" type="number" value="4"></div>
+<div class="field">
+<label>Salaire net mensuel (€)</label>
+<input id="revenu" type="number" value="2200">
+</div>
+<div class="field">
+<label>Dépenses mensuelles (€)</label>
+<input id="depenses" type="number" value="450">
+</div>
+<div class="field">
+<label>Durée de la saison (mois)</label>
+<input id="mois" type="number" value="4">
+</div>
 <button class="btn" type="submit">Calculer mon épargne</button>
 </form>
 <div id="budgetResult" class="notice hidden"></div>
 </div>
 </section>
+
 </main>
 
 <footer>
-<div class="logo">SEASON<span style="color:var(--cyan)">GO</span></div>
+<div class="logo">SEASON<span>GO</span></div>
 <p>Vivre sa saison autrement.</p>
 <p style="margin-top:12px">SEASONGO © 2026 — Tous droits réservés</p>
 <p style="margin-top:8px">Une nouvelle génération de services pour les saisonniers.</p>
@@ -266,156 +357,414 @@ section{padding:48px 6%}
 </div>
 
 <script>
-let jobs=[
+
+// OFFRES D'EMPLOI
+
+const defaultJobs=[
 {id:1,entreprise:"La Flèche d'Or",metier:"Chef de rang",ville:"Saint-Gervais",salaire:2700,logement:"oui",description:"Restaurant situé au pied des pistes. Clientèle internationale. Hébergement et repas fournis. Contrat saisonnier."},
 {id:2,entreprise:"Brasserie des Alpes",metier:"Serveur",ville:"Tignes",salaire:2100,logement:"oui",description:"Recherche serveur motivé pour la saison d'hiver. Équipe dynamique. Logement fourni."},
 {id:3,entreprise:"Restaurant du Sommet",metier:"Cuisinier",ville:"Avoriaz",salaire:2300,logement:"oui",description:"Poste en cuisine pour la saison d'hiver. Expérience souhaitée."}
 ];
 
+let jobs=[...defaultJobs];
+
+try{
+const savedJobs=JSON.parse(localStorage.getItem("seasongo_jobs")||"[]");
+savedJobs.forEach(j=>{
+if(!jobs.some(x=>x.id===j.id))jobs.push(j);
+});
+}catch(e){
+console.warn("Impossible de charger les offres sauvegardées.");
+}
+
+// OUTILS
+
 function go(id){
 document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
+
 function escapeHTML(value){
-return String(value).replace(/[&<>"']/g,function(c){
+return String(value??"").replace(/[&<>"']/g,function(c){
 return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
 });
 }
-function showJobs(list){
-const area=document.getElementById("results");
-area.innerHTML="";
-if(!list.length){
-area.innerHTML='<div class="card">Aucune offre ne correspond à ces critères. Essaie d'élargir ta recherche.</div>';
-return;
+
+function normalizeName(value){
+return String(value||"").trim().toLowerCase().replace(/\s+/g," ");
 }
-list.forEach(job=>{
-const el=document.createElement("div");
-el.className="job";
-el.innerHTML=`
-<span class="pill">${job.logement==="oui"?"Logement fourni":"Sans logement fourni"}</span>
-<h3>${escapeHTML(job.metier)}</h3>
-<p>📍 ${escapeHTML(job.ville)}</p>
-<p>🏢 ${escapeHTML(job.entreprise)}</p>
-<p>💶 ${job.salaire} € brut / mois</p>
-<button class="btn" onclick="details(${job.id})">Voir l'offre</button>`;
-area.appendChild(el);
-});
+
+// DEMANDES DE VERIFICATION
+
+function getRequests(){
+try{
+return JSON.parse(localStorage.getItem("seasongo_verifications")||"[]");
+}catch(e){
+return [];
 }
-document.getElementById("searchForm").addEventListener("submit",function(e){
-e.preventDefault();
-const m=document.getElementById("metier").value.trim().toLowerCase();
-const d=document.getElementById("destination").value.trim().toLowerCase();
-const l=document.getElementById("logement").value;
-const s=Number(document.getElementById("salaire").value)||0;
-const filtered=jobs.filter(j=>
-(!m||j.metier.toLowerCase().includes(m))&&
-(!d||j.ville.toLowerCase().includes(d))&&
-(l==="tous"||j.logement===l)&&
-j.salaire>=s
+}
+
+function saveRequests(requests){
+localStorage.setItem("seasongo_verifications",JSON.stringify(requests));
+}
+
+function getStatus(request){
+return request.status||"pending";
+}
+
+function statusBadge(status){
+if(status==="verified"){
+return '<span class="badge-verified">✓ Employeur vérifié (démo)</span>';
+}
+if(status==="refused"){
+return '<span class="badge-refused">Demande refusée</span>';
+}
+return '<span class="badge-pending">⏳ En attente</span>';
+}
+
+function isEmployerVerified(name){
+return getRequests().some(r=>
+getStatus(r)==="verified" &&
+normalizeName(r.entreprise)===normalizeName(name)
 );
-const summary=document.getElementById("searchSummary");
-summary.classList.remove("hidden");
-summary.textContent="Recherche : "+(m||"Tous métiers")+" | "+(d||"Toutes destinations")+" | "+(l==="oui"?"Logement fourni":l==="non"?"Sans logement obligatoire":"Tous logements")+" | "+filtered.length+" offre(s) trouvée(s).";
-showJobs(filtered);
-});
-function details(id){
-const j=jobs.find(x=>x.id===id);
-if(!j)return;
-document.getElementById("modalBody").innerHTML=`
-<h2>${escapeHTML(j.metier)}</h2>
-<p style="margin:12px 0;color:var(--cyan)">${escapeHTML(j.entreprise)}</p>
-<p>📍 ${escapeHTML(j.ville)}</p>
-<p>💶 ${j.salaire} € brut / mois</p>
-<p>🏠 ${j.logement==="oui"?"Logement fourni":"Logement non fourni"}</p>
-<hr>
-<p>${escapeHTML(j.description)}</p>
-<br>
-<button class="btn" onclick="apply(${j.id})">Postuler à cette offre</button>`;
-document.getElementById("modal").classList.add("show");
 }
-function closeModal(){document.getElementById("modal").classList.remove("show")}
-function apply(id){
-const j=jobs.find(x=>x.id===id);
-document.getElementById("modalBody").innerHTML=`
-<h2>📩 Candidature</h2>
-<p>Poste : ${escapeHTML(j.metier)} – ${escapeHTML(j.entreprise)}</p>
-<form id="applyForm">
-<div class="field"><label>Nom et prénom</label><input required id="appName"></div>
-<div class="field"><label>Adresse e-mail</label><input type="email" required id="appEmail"></div>
-<div class="field"><label>Message de motivation</label><textarea required id="appMessage"></textarea></div>
-<button class="btn" type="submit">Préparer ma candidature</button>
-</form>
-<p class="small">Cette démonstration ne transmet pas encore la candidature à l'employeur.</p>`;
-document.getElementById("applyForm").addEventListener("submit",function(e){
-e.preventDefault();
-const name=document.getElementById("appName").value;
-const email=document.getElementById("appEmail").value;
-const msg=document.getElementById("appMessage").value;
-const subject="Candidature – "+j.metier;
-const body="Nom : "+name+"\nEmail : "+email+"\nMessage : "+msg;
-document.getElementById("modalBody").innerHTML=`
-<h2>Votre candidature est prête !</h2>
-<p>Vous pouvez copier votre message pour le transmettre à l'établissement.</p>
-<button class="btn" onclick="copyText(${JSON.stringify(subject+"\n\n"+body)})">Copier ma candidature</button>
-<p class="small">La candidature n'a pas encore été envoyée.</p>`;
-});
-}
-function copyText(t){
-if(navigator.clipboard&&navigator.clipboard.writeText){
-navigator.clipboard.writeText(t).then(()=>alert("Texte copié !")).catch(()=>alert(t));
-}else{alert(t)}
-}
+
+// FORMULAIRE DE VERIFICATION
+
 document.getElementById("verifyForm").addEventListener("submit",function(e){
 e.preventDefault();
+
 const s=document.getElementById("siret").value.trim();
+
 if(!/^[0-9]{14}$/.test(s)){
 alert("Le SIRET doit comporter exactement 14 chiffres.");
 return;
 }
+
+const requests=getRequests();
+
+if(requests.some(r=>r.siret===s && getStatus(r)!=="refused")){
+alert("Une demande existe déjà pour ce SIRET.");
+return;
+}
+
 const request={
-entreprise:document.getElementById("entreprise").value,
-responsable:document.getElementById("responsable").value,
-email:document.getElementById("emailPro").value,
-siret:s,ville:document.getElementById("ville").value,
-date:new Date().toISOString()
+id:Date.now(),
+entreprise:document.getElementById("entreprise").value.trim(),
+responsable:document.getElementById("responsable").value.trim(),
+email:document.getElementById("emailPro").value.trim(),
+siret:s,
+ville:document.getElementById("ville").value.trim(),
+date:new Date().toISOString(),
+status:"pending"
 };
-let requests=JSON.parse(localStorage.getItem("seasongo_verifications")||"[]");
+
 requests.push(request);
-localStorage.setItem("seasongo_verifications",JSON.stringify(requests));
+saveRequests(requests);
+
 document.getElementById("verifyResult").innerHTML=
-'<div class="notice">Demande enregistrée sur cet appareil. Statut : en attente de vérification officielle.</div>';
+'<div class="notice">✓ Votre demande a été enregistrée. Statut : en attente de vérification.</div>';
+
 this.reset();
+renderAdmin();
+renderMyRequests();
 });
+
+// SUIVI DES DEMANDES
+
+function renderMyRequests(){
+const area=document.getElementById("myRequests");
+const requests=getRequests();
+
+if(!requests.length){
+area.innerHTML='<p class="empty">Aucune demande enregistrée pour le moment.</p>';
+return;
+}
+
+area.innerHTML="";
+
+requests.forEach(r=>{
+const card=document.createElement("div");
+card.className="card admin-card";
+
+card.innerHTML=`
+<h3>${escapeHTML(r.entreprise)}</h3>
+<p>Destination : ${escapeHTML(r.ville)}</p>
+<p>SIRET : ${escapeHTML(r.siret)}</p>
+<p>${statusBadge(getStatus(r))}</p>
+`;
+
+area.appendChild(card);
+});
+}
+
+// ESPACE ADMINISTRATEUR DE DEMONSTRATION
+
+function toggleAdmin(){
+const panel=document.getElementById("adminPanel");
+panel.classList.toggle("hidden");
+renderAdmin();
+}
+
+function renderAdmin(){
+const area=document.getElementById("adminRequests");
+if(!area)return;
+
+const requests=getRequests();
+
+if(!requests.length){
+area.innerHTML='<p class="empty">Aucune demande reçue pour le moment.</p>';
+return;
+}
+
+area.innerHTML="";
+
+requests.forEach(r=>{
+const card=document.createElement("div");
+card.className="card admin-card";
+
+const date=r.date?new Date(r.date).toLocaleDateString("fr-FR"):"Non renseignée";
+
+card.innerHTML=`
+<h3>🏢 ${escapeHTML(r.entreprise)}</h3>
+<p>Responsable : ${escapeHTML(r.responsable)}</p>
+<p>Email : ${escapeHTML(r.email)}</p>
+<p>SIRET : ${escapeHTML(r.siret)}</p>
+<p>Destination : ${escapeHTML(r.ville)}</p>
+<p>Statut : ${statusBadge(getStatus(r))}</p>
+<p class="small">Date de demande : ${escapeHTML(date)}</p>
+<div class="admin-actions">
+<button class="btn" onclick="changeVerification(${Number(r.id)},'verified')">Valider</button>
+<button class="btn red" onclick="changeVerification(${Number(r.id)},'refused')">Refuser</button>
+</div>
+`;
+
+area.appendChild(card);
+});
+}
+
+function changeVerification(id,status){
+const requests=getRequests();
+const request=requests.find(r=>Number(r.id)===Number(id));
+
+if(!request)return;
+
+if(status==="verified"){
+const confirmation=confirm(
+"Confirmer le statut vérifié pour cet établissement dans cette démonstration locale ?"
+);
+if(!confirmation)return;
+}
+
+request.status=status;
+saveRequests(requests);
+
+renderAdmin();
+renderMyRequests();
+showJobs(jobs);
+
+alert(status==="verified"
+?"Statut modifié. Le badge de démonstration sera visible sur les annonces correspondantes."
+:"La demande a été refusée.");
+}
+
+// RECHERCHE D'EMPLOI
+
+function showJobs(list){
+const area=document.getElementById("results");
+area.innerHTML="";
+
+if(!list.length){
+area.innerHTML='<div class="card">Aucune offre ne correspond à ces critères. Essaie d’élargir ta recherche.</div>';
+return;
+}
+
+list.forEach(job=>{
+const el=document.createElement("div");
+el.className="job";
+
+const verified=isEmployerVerified(job.entreprise);
+
+el.innerHTML=`
+<span class="pill">${job.logement==="oui"?"Logement fourni":"Sans logement fourni"}</span>
+${verified?'<br><span class="badge-verified">✓ Employeur vérifié (démo)</span>':""}
+<h3>${escapeHTML(job.metier)}</h3>
+<p>📍 ${escapeHTML(job.ville)}</p>
+<p>🏢 ${escapeHTML(job.entreprise)}</p>
+<p>💶 ${Number(job.salaire).toLocaleString("fr-FR")} € brut / mois</p>
+<button class="btn" onclick="details(${Number(job.id)})">Voir l'offre</button>
+`;
+
+area.appendChild(el);
+});
+}
+
+document.getElementById("searchForm").addEventListener("submit",function(e){
+e.preventDefault();
+
+const m=document.getElementById("metier").value.trim().toLowerCase();
+const d=document.getElementById("destination").value.trim().toLowerCase();
+const l=document.getElementById("logement").value;
+const s=Number(document.getElementById("salaire").value)||0;
+
+const filtered=jobs.filter(j=>
+(!m||j.metier.toLowerCase().includes(m))&&
+(!d||j.ville.toLowerCase().includes(d))&&
+(l==="tous"||j.logement===l)&&
+Number(j.salaire)>=s
+);
+
+const summary=document.getElementById("searchSummary");
+summary.classList.remove("hidden");
+summary.textContent=
+"Recherche : "+(m||"Tous métiers")+
+" | "+(d||"Toutes destinations")+
+" | "+(l==="oui"?"Logement fourni":l==="non"?"Sans logement obligatoire":"Tous logements")+
+" | "+filtered.length+" offre(s) trouvée(s).";
+
+showJobs(filtered);
+});
+
+// DETAILS D'UNE OFFRE
+
+function details(id){
+const j=jobs.find(x=>Number(x.id)===Number(id));
+if(!j)return;
+
+const verified=isEmployerVerified(j.entreprise);
+
+document.getElementById("modalBody").innerHTML=`
+<h2>${escapeHTML(j.metier)}</h2>
+<p style="margin:12px 0;color:var(--cyan)">${escapeHTML(j.entreprise)}</p>
+${verified?'<p class="badge-verified">✓ Employeur vérifié (démo)</p>':""}
+<p>📍 ${escapeHTML(j.ville)}</p>
+<p>💶 ${Number(j.salaire).toLocaleString("fr-FR")} € brut / mois</p>
+<p>🏠 ${j.logement==="oui"?"Logement fourni":"Logement non fourni"}</p>
+<hr>
+<p>${escapeHTML(j.description)}</p>
+<br>
+<button class="btn" onclick="apply(${Number(j.id)})">Postuler à cette offre</button>
+`;
+
+document.getElementById("modal").classList.add("show");
+}
+
+function closeModal(){
+document.getElementById("modal").classList.remove("show");
+}
+
+// CANDIDATURE
+
+function apply(id){
+const j=jobs.find(x=>Number(x.id)===Number(id));
+if(!j)return;
+
+document.getElementById("modalBody").innerHTML=`
+<h2>📩 Candidature</h2>
+<p>Poste : ${escapeHTML(j.metier)} – ${escapeHTML(j.entreprise)}</p>
+<form id="applyForm">
+<div class="field">
+<label>Nom et prénom</label>
+<input required id="appName">
+</div>
+<div class="field">
+<label>Adresse e-mail</label>
+<input type="email" required id="appEmail">
+</div>
+<div class="field">
+<label>Message de motivation</label>
+<textarea required id="appMessage"></textarea>
+</div>
+<button class="btn" type="submit">Préparer ma candidature</button>
+</form>
+<p class="small">Cette démonstration ne transmet pas encore la candidature à l'employeur.</p>
+`;
+
+document.getElementById("applyForm").addEventListener("submit",function(e){
+e.preventDefault();
+
+const name=document.getElementById("appName").value;
+const email=document.getElementById("appEmail").value;
+const msg=document.getElementById("appMessage").value;
+
+const subject="Candidature – "+j.metier;
+const body="Nom : "+name+"\nEmail : "+email+"\nMessage : "+msg;
+
+document.getElementById("modalBody").innerHTML=`
+<h2>Votre candidature est prête !</h2>
+<p>Vous pouvez copier votre message pour le transmettre à l'établissement.</p>
+<button class="btn" id="copyApplication">Copier ma candidature</button>
+<p class="small">La candidature n'a pas encore été envoyée.</p>
+`;
+
+document.getElementById("copyApplication").addEventListener("click",function(){
+copyText(subject+"\n\n"+body);
+});
+});
+}
+
+function copyText(t){
+if(navigator.clipboard&&navigator.clipboard.writeText){
+navigator.clipboard.writeText(t)
+.then(()=>alert("Texte copié !"))
+.catch(()=>alert("Copie impossible sur cet appareil."));
+}else{
+alert(t);
+}
+}
+
+// AJOUT D'UNE OFFRE
+
 document.getElementById("jobForm").addEventListener("submit",function(e){
 e.preventDefault();
+
 const job={
 id:Date.now(),
-entreprise:document.getElementById("jobEntreprise").value,
-metier:document.getElementById("jobMetier").value,
-ville:document.getElementById("jobVille").value,
+entreprise:document.getElementById("jobEntreprise").value.trim(),
+metier:document.getElementById("jobMetier").value.trim(),
+ville:document.getElementById("jobVille").value.trim(),
 salaire:Number(document.getElementById("jobSalaire").value),
 logement:document.getElementById("jobLogement").value,
-description:document.getElementById("jobDescription").value
+description:document.getElementById("jobDescription").value.trim()
 };
+
 jobs.push(job);
 localStorage.setItem("seasongo_jobs",JSON.stringify(jobs));
-alert("Offre ajoutée à la démonstration !");
+
+document.getElementById("jobResult").innerHTML=
+'<div class="notice">Offre ajoutée à la démonstration SEASONGO.</div>';
+
 this.reset();
 });
+
+// CALCUL DU BUDGET
+
 document.getElementById("budgetForm").addEventListener("submit",function(e){
 e.preventDefault();
+
 const r=Number(document.getElementById("revenu").value);
 const d=Number(document.getElementById("depenses").value);
 const m=Number(document.getElementById("mois").value);
-if(r<0||d<0||m<=0){alert("Vérifie tes chiffres.");return}
-const total=(r-d)*m;
+
+if(r<0||d<0||m<=0||!Number.isFinite(r)||!Number.isFinite(d)||!Number.isFinite(m)){
+alert("Vérifie tes chiffres.");
+return;
+}
+
+const monthly=r-d;
+const total=monthly*m;
 const box=document.getElementById("budgetResult");
+
 box.classList.remove("hidden");
-box.innerHTML="Épargne mensuelle estimée : <strong>"+(r-d).toLocaleString("fr-FR")+" €</strong><br>Épargne totale estimée : <strong>"+total.toLocaleString("fr-FR")+" €</strong>";
+box.innerHTML=
+"Épargne mensuelle estimée : <strong>"+monthly.toLocaleString("fr-FR")+" €</strong><br>"+
+"Épargne totale estimée : <strong>"+total.toLocaleString("fr-FR")+" €</strong>";
 });
-try{
-const saved=JSON.parse(localStorage.getItem("seasongo_jobs")||"[]");
-saved.forEach(j=>{if(!jobs.some(x=>x.id===j.id))jobs.push(j)});
-}catch(e){}
+
+// INITIALISATION
+
+renderMyRequests();
+renderAdmin();
+
 </script>
 </body>
 </html>
