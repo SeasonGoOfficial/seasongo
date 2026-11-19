@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -77,33 +76,22 @@ textarea{min-height:90px;resize:vertical}
 .job h3{margin:12px 0 8px}
 .job p{color:var(--muted);font-size:14px;margin:7px 0}
 .pill{display:inline-block;background:#193e5c;padding:5px 9px;border-radius:20px;font-size:11px;margin:5px 3px 5px 0;color:var(--cyan)}
-.badge-verified{
-display:inline-block;background:#124c3b;color:#8ff2c6;
-border:1px solid #38d996;padding:6px 10px;border-radius:20px;
+.badge-verified,.badge-identified,.badge-pending,.badge-refused{
+display:inline-block;padding:6px 10px;border-radius:20px;
 font-size:11px;font-weight:bold;margin:5px 0
 }
-.badge-pending{
-display:inline-block;background:#554522;color:#ffdc8a;
-padding:6px 10px;border-radius:20px;font-size:11px
-}
-.badge-refused{
-display:inline-block;background:#542d36;color:#ffaaaa;
-padding:6px 10px;border-radius:20px;font-size:11px
-}
+.badge-verified{background:#124c3b;color:#8ff2c6;border:1px solid #38d996}
+.badge-identified{background:#173e5c;color:#8ddcff;border:1px solid #35a9d7}
+.badge-pending{background:#554522;color:#ffdc8a;border:1px solid #92753c}
+.badge-refused{background:#542d36;color:#ffaaaa;border:1px solid #a94b5b}
 .notice{background:#173e43;border:1px solid #2d807b;padding:15px;border-radius:9px;margin:15px 0;color:#bdf8e9;line-height:1.6}
 .warning{background:#493c20;border:1px solid #92753c;padding:15px;border-radius:9px;margin:15px 0;color:#ffe1a0;line-height:1.6}
 .hidden{display:none!important}
 footer{padding:35px 7%;background:#041225;color:var(--muted);text-align:center;font-size:13px}
 hr{border:0;border-top:1px solid var(--line);margin:22px 0}
-.modal{
-position:fixed;inset:0;background:#000b;z-index:50;
-display:none;align-items:center;justify-content:center;padding:15px
-}
+.modal{position:fixed;inset:0;background:#000b;z-index:50;display:none;align-items:center;justify-content:center;padding:15px}
 .modal.show{display:flex}
-.modal-content{
-background:#102c4c;border:1px solid var(--line);border-radius:16px;
-padding:25px;max-width:520px;width:100%;max-height:90vh;overflow:auto
-}
+.modal-content{background:#102c4c;border:1px solid var(--line);border-radius:16px;padding:25px;max-width:520px;width:100%;max-height:90vh;overflow:auto}
 .close{float:right;background:none;border:0;color:white;font-size:25px;cursor:pointer}
 .small{font-size:12px;color:var(--muted);line-height:1.5}
 .admin-card{margin-top:14px}
@@ -120,7 +108,6 @@ section{padding:48px 6%}
 </head>
 
 <body>
-
 <header>
 <div class="logo">SEASON<span>GO</span></div>
 <nav>
@@ -134,7 +121,6 @@ section{padding:48px 6%}
 </header>
 
 <main>
-
 <div class="hero" id="accueil">
 <div class="hero-content">
 <span class="tag">LA NOUVELLE EXPÉRIENCE SAISONNIÈRE</span>
@@ -164,26 +150,15 @@ section{padding:48px 6%}
 <div class="searchbox">
 <form id="searchForm">
 <div class="grid">
-<div class="field">
-<label>Métier recherché</label>
-<input id="metier" placeholder="Ex : Serveur, cuisinier, barman...">
-</div>
-<div class="field">
-<label>Destination</label>
-<input id="destination" placeholder="Ex : Tignes, Megève, Avoriaz...">
-</div>
-<div class="field">
-<label>Logement</label>
+<div class="field"><label>Métier recherché</label><input id="metier" placeholder="Ex : Serveur, cuisinier, barman..."></div>
+<div class="field"><label>Destination</label><input id="destination" placeholder="Ex : Tignes, Megève, Avoriaz..."></div>
+<div class="field"><label>Logement</label>
 <select id="logement">
 <option value="tous">Indifférent</option>
 <option value="oui">Logement obligatoire</option>
 <option value="non">Sans logement obligatoire</option>
-</select>
-</div>
-<div class="field">
-<label>Rémunération minimum (€ brut/mois)</label>
-<input id="salaire" type="number" placeholder="Ex : 1800">
-</div>
+</select></div>
+<div class="field"><label>Rémunération minimum (€ brut/mois)</label><input id="salaire" type="number" placeholder="Ex : 1800"></div>
 </div>
 <button class="btn" type="submit">Lancer la recherche →</button>
 </form>
@@ -196,111 +171,66 @@ section{padding:48px 6%}
 <h2 class="section-title">🛡️ SEASONGO CONFIANCE</h2>
 <p class="subtitle">La confiance doit devenir la norme du travail saisonnier.</p>
 <div class="grid">
-<div class="card">
-<div class="icon">🏢</div>
-<h3>Employeurs identifiés</h3>
-<p>Collecte des informations légales de l'entreprise et vérification de son identité.</p>
-</div>
-<div class="card">
-<div class="icon">🔐</div>
-<h3>Protection des saisonniers</h3>
-<p>Un espace destiné à réduire les risques de fausses annonces et d'usurpation d'identité.</p>
-</div>
-<div class="card">
-<div class="icon">✅</div>
-<h3>Badge de confiance</h3>
-<p>Les entreprises contrôlées pourront bénéficier d'un badge après vérification effective.</p>
-</div>
+<div class="card"><div class="icon">🏢</div><h3>Employeurs identifiés</h3><p>Un SIRET renseigné et soumis à un contrôle de format et de cohérence.</p></div>
+<div class="card"><div class="icon">🔐</div><h3>Protection des saisonniers</h3><p>Une démarche pour réduire les risques de fausses annonces et d'usurpation d'identité.</p></div>
+<div class="card"><div class="icon">✅</div><h3>Badge de confiance</h3><p>Un badge de démonstration est affiché après validation locale. Une vraie certification exigera des contrôles documentaires.</p></div>
 </div>
 <div class="notice">
-Un formulaire rempli ne constitue pas une vérification officielle. Le badge définitif nécessitera un contrôle réel des informations.
+<strong>Les trois statuts SEASONGO :</strong><br><br>
+<span class="badge-identified">Employeur identifié</span><br>
+SIRET renseigné et contrôle de cohérence réussi. Cela ne prouve pas l'identité du responsable.<br><br>
+<span class="badge-pending">Vérification en cours</span><br>
+Demande enregistrée, contrôle documentaire restant à effectuer.<br><br>
+<span class="badge-verified">Établissement vérifié (démo)</span><br>
+Validation manuelle dans cette version locale uniquement.
 </div>
+<div class="warning">Important : cette version ne consulte pas automatiquement le registre officiel des entreprises et ne délivre aucune certification réelle.</div>
 </section>
 
 <section id="employeur">
 <h2 class="section-title">🏢 Espace employeur</h2>
 <p class="subtitle">Recrute tes futurs collaborateurs saisonniers.</p>
-
 <div class="card">
 <h3>Demander la vérification de mon établissement</h3>
-<p class="small">Présente ton établissement pour demander son contrôle par SEASONGO.</p>
+<p class="small">Les informations sont enregistrées localement sur cet appareil dans cette démonstration.</p>
 
 <form id="verifyForm">
-<div class="field">
-<label>Nom de l'établissement</label>
-<input id="entreprise" required placeholder="Nom de votre établissement">
-</div>
-<div class="field">
-<label>Nom du responsable</label>
-<input id="responsable" required placeholder="Votre nom">
-</div>
-<div class="field">
-<label>Adresse e-mail professionnelle</label>
-<input id="emailPro" type="email" required placeholder="contact@entreprise.fr">
-</div>
-<div class="field">
-<label>Numéro SIRET (14 chiffres)</label>
-<input id="siret" required maxlength="14" inputmode="numeric" pattern="[0-9]{14}" placeholder="12345678901234">
-</div>
-<div class="field">
-<label>Destination</label>
-<input id="ville" required placeholder="Ville / Station">
-</div>
+<div class="field"><label>Nom de l'établissement</label><input id="entreprise" required placeholder="Nom de votre établissement"></div>
+<div class="field"><label>Nom du responsable</label><input id="responsable" required placeholder="Votre nom"></div>
+<div class="field"><label>Adresse e-mail professionnelle</label><input id="emailPro" type="email" required placeholder="contact@entreprise.fr"></div>
+<div class="field"><label>Numéro SIRET (14 chiffres)</label><input id="siret" required maxlength="14" inputmode="numeric" pattern="[0-9]{14}" placeholder="12345678901234"></div>
+<div class="field"><label>Destination</label><input id="ville" required placeholder="Ville / Station"></div>
 <button class="btn gold" type="submit">Soumettre ma demande</button>
 </form>
-
 <div id="verifyResult"></div>
 
 <hr>
-
 <h3>📋 Suivre mes demandes</h3>
 <p class="small">Les demandes enregistrées sur cet appareil sont visibles ci-dessous.</p>
 <div id="myRequests"></div>
 
 <hr>
-
 <h3>🔐 Gestion des vérifications SEASONGO</h3>
-<p class="small">Espace de démonstration locale pour gérer les demandes.</p>
+<p class="small">Espace de démonstration locale.</p>
 <button class="btn dark" type="button" onclick="toggleAdmin()">Ouvrir les demandes employeurs</button>
-
 <div id="adminPanel" class="hidden">
 <div class="warning">
-<strong>Attention :</strong> cet espace de gestion est une démonstration locale. Il n'est pas protégé par un compte administrateur et les données ne sont pas partagées entre les appareils. Ne l'utilise pas pour délivrer de véritables certifications.
+<strong>Attention :</strong> cet espace n'est pas protégé par un compte administrateur. Toute personne ayant accès à cette page peut modifier les statuts locaux. Ne délivre aucune véritable certification depuis cette démonstration.
 </div>
 <div id="adminRequests"></div>
 </div>
 
 <hr>
-
 <h3>Publier une offre d'emploi</h3>
 <form id="jobForm">
-<div class="field">
-<label>Nom de l'établissement</label>
-<input id="jobEntreprise" required>
-</div>
-<div class="field">
-<label>Poste proposé</label>
-<input id="jobMetier" required placeholder="Ex : Chef de rang">
-</div>
-<div class="field">
-<label>Destination</label>
-<input id="jobVille" required>
-</div>
-<div class="field">
-<label>Salaire brut mensuel (€)</label>
-<input id="jobSalaire" type="number" required>
-</div>
-<div class="field">
-<label>Logement</label>
-<select id="jobLogement">
-<option value="oui">Fourni</option>
-<option value="non">Non fourni</option>
-</select>
-</div>
-<div class="field">
-<label>Description</label>
-<textarea id="jobDescription" required></textarea>
-</div>
+<div class="field"><label>Nom de l'établissement</label><input id="jobEntreprise" required></div>
+<div class="field"><label>SIRET de l'établissement</label><input id="jobSiret" required maxlength="14" inputmode="numeric" pattern="[0-9]{14}" placeholder="14 chiffres"></div>
+<div class="field"><label>Poste proposé</label><input id="jobMetier" required placeholder="Ex : Chef de rang"></div>
+<div class="field"><label>Destination</label><input id="jobVille" required></div>
+<div class="field"><label>Salaire brut mensuel (€)</label><input id="jobSalaire" type="number" required min="0"></div>
+<div class="field"><label>Logement</label>
+<select id="jobLogement"><option value="oui">Fourni</option><option value="non">Non fourni</option></select></div>
+<div class="field"><label>Description</label><textarea id="jobDescription" required></textarea></div>
 <button class="btn" type="submit">Ajouter l'offre</button>
 </form>
 <div id="jobResult"></div>
@@ -322,24 +252,14 @@ Un formulaire rempli ne constitue pas une vérification officielle. Le badge dé
 <p class="subtitle">Calcule rapidement combien tu pourrais mettre de côté.</p>
 <div class="card">
 <form id="budgetForm">
-<div class="field">
-<label>Salaire net mensuel (€)</label>
-<input id="revenu" type="number" value="2200">
-</div>
-<div class="field">
-<label>Dépenses mensuelles (€)</label>
-<input id="depenses" type="number" value="450">
-</div>
-<div class="field">
-<label>Durée de la saison (mois)</label>
-<input id="mois" type="number" value="4">
-</div>
+<div class="field"><label>Salaire net mensuel (€)</label><input id="revenu" type="number" value="2200"></div>
+<div class="field"><label>Dépenses mensuelles (€)</label><input id="depenses" type="number" value="450"></div>
+<div class="field"><label>Durée de la saison (mois)</label><input id="mois" type="number" value="4"></div>
 <button class="btn" type="submit">Calculer mon épargne</button>
 </form>
 <div id="budgetResult" class="notice hidden"></div>
 </div>
 </section>
-
 </main>
 
 <footer>
@@ -357,9 +277,7 @@ Un formulaire rempli ne constitue pas une vérification officielle. Le badge dé
 </div>
 
 <script>
-
 // OFFRES D'EMPLOI
-
 const defaultJobs=[
 {id:1,entreprise:"La Flèche d'Or",metier:"Chef de rang",ville:"Saint-Gervais",salaire:2700,logement:"oui",description:"Restaurant situé au pied des pistes. Clientèle internationale. Hébergement et repas fournis. Contrat saisonnier."},
 {id:2,entreprise:"Brasserie des Alpes",metier:"Serveur",ville:"Tignes",salaire:2100,logement:"oui",description:"Recherche serveur motivé pour la saison d'hiver. Équipe dynamique. Logement fourni."},
@@ -367,86 +285,72 @@ const defaultJobs=[
 ];
 
 let jobs=[...defaultJobs];
-
 try{
 const savedJobs=JSON.parse(localStorage.getItem("seasongo_jobs")||"[]");
-savedJobs.forEach(j=>{
-if(!jobs.some(x=>x.id===j.id))jobs.push(j);
-});
-}catch(e){
-console.warn("Impossible de charger les offres sauvegardées.");
-}
+savedJobs.forEach(j=>{if(!jobs.some(x=>x.id===j.id))jobs.push(j);});
+}catch(e){console.warn("Chargement des offres impossible.");}
 
 // OUTILS
-
-function go(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"});}
 function escapeHTML(value){
-return String(value??"").replace(/[&<>"']/g,function(c){
-return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
-});
+return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
-
-function normalizeName(value){
-return String(value||"").trim().toLowerCase().replace(/\s+/g," ");
+function normalizeName(value){return String(value||"").trim().toLowerCase().replace(/\s+/g," ");}
+function validSiret(value){
+const s=String(value||"").replace(/\s/g,"");
+if(!/^\d{14}$/.test(s))return false;
+let sum=0;
+for(let i=0;i<14;i++){
+let n=Number(s[i]);
+if(i%2===0){
+n*=2;
+if(n>9)n-=9;
+}
+sum+=n;
+}
+return sum%10===0;
 }
 
 // DEMANDES DE VERIFICATION
-
 function getRequests(){
 try{
-return JSON.parse(localStorage.getItem("seasongo_verifications")||"[]");
-}catch(e){
-return [];
+const data=JSON.parse(localStorage.getItem("seasongo_verifications")||"[]");
+return Array.isArray(data)?data:[];
+}catch(e){return [];}
 }
-}
-
 function saveRequests(requests){
 localStorage.setItem("seasongo_verifications",JSON.stringify(requests));
 }
-
-function getStatus(request){
-return request.status||"pending";
-}
+function getStatus(request){return request.status||"pending";}
 
 function statusBadge(status){
-if(status==="verified"){
-return '<span class="badge-verified">✓ Employeur vérifié (démo)</span>';
-}
-if(status==="refused"){
-return '<span class="badge-refused">Demande refusée</span>';
-}
-return '<span class="badge-pending">⏳ En attente</span>';
+if(status==="verified")return '<span class="badge-verified">✓ Établissement vérifié (démo)</span>';
+if(status==="refused")return '<span class="badge-refused">Demande refusée</span>';
+if(status==="pending")return '<span class="badge-pending">⏳ Vérification en cours</span>';
+return '<span class="badge-identified">✓ Employeur identifié</span>';
 }
 
-function isEmployerVerified(name){
-return getRequests().some(r=>
-getStatus(r)==="verified" &&
-normalizeName(r.entreprise)===normalizeName(name)
-);
+function getVerifiedEmployer(siret){
+return getRequests().find(r=>r.siret===siret&&getStatus(r)==="verified");
+}
+function isEmployerVerified(job){
+return Boolean(job.siret&&getVerifiedEmployer(job.siret));
 }
 
 // FORMULAIRE DE VERIFICATION
-
 document.getElementById("verifyForm").addEventListener("submit",function(e){
 e.preventDefault();
-
 const s=document.getElementById("siret").value.trim();
 
-if(!/^[0-9]{14}$/.test(s)){
-alert("Le SIRET doit comporter exactement 14 chiffres.");
+if(!validSiret(s)){
+alert("Le SIRET est incorrect. Vérifie les 14 chiffres et sa clé de contrôle.");
 return;
 }
-
 const requests=getRequests();
-
-if(requests.some(r=>r.siret===s && getStatus(r)!=="refused")){
+if(requests.some(r=>r.siret===s&&getStatus(r)!=="refused")){
 alert("Une demande existe déjà pour ce SIRET.");
 return;
 }
-
 const request={
 id:Date.now(),
 entreprise:document.getElementById("entreprise").value.trim(),
@@ -457,73 +361,54 @@ ville:document.getElementById("ville").value.trim(),
 date:new Date().toISOString(),
 status:"pending"
 };
-
 requests.push(request);
 saveRequests(requests);
-
 document.getElementById("verifyResult").innerHTML=
-'<div class="notice">✓ Votre demande a été enregistrée. Statut : en attente de vérification.</div>';
-
+'<div class="notice">✓ SIRET au format cohérent. Employeur identifié au sens du formulaire. Votre demande est enregistrée : vérification en cours. Cela ne constitue pas une vérification officielle de l’entreprise.</div>';
 this.reset();
 renderAdmin();
 renderMyRequests();
 });
 
 // SUIVI DES DEMANDES
-
 function renderMyRequests(){
 const area=document.getElementById("myRequests");
 const requests=getRequests();
-
 if(!requests.length){
 area.innerHTML='<p class="empty">Aucune demande enregistrée pour le moment.</p>';
 return;
 }
-
 area.innerHTML="";
-
 requests.forEach(r=>{
 const card=document.createElement("div");
 card.className="card admin-card";
-
 card.innerHTML=`
 <h3>${escapeHTML(r.entreprise)}</h3>
 <p>Destination : ${escapeHTML(r.ville)}</p>
 <p>SIRET : ${escapeHTML(r.siret)}</p>
-<p>${statusBadge(getStatus(r))}</p>
-`;
-
+<p>${statusBadge(getStatus(r))}</p>`;
 area.appendChild(card);
 });
 }
 
-// ESPACE ADMINISTRATEUR DE DEMONSTRATION
-
+// ADMINISTRATION LOCALE
 function toggleAdmin(){
-const panel=document.getElementById("adminPanel");
-panel.classList.toggle("hidden");
+document.getElementById("adminPanel").classList.toggle("hidden");
 renderAdmin();
 }
-
 function renderAdmin(){
 const area=document.getElementById("adminRequests");
 if(!area)return;
-
 const requests=getRequests();
-
 if(!requests.length){
 area.innerHTML='<p class="empty">Aucune demande reçue pour le moment.</p>';
 return;
 }
-
 area.innerHTML="";
-
 requests.forEach(r=>{
 const card=document.createElement("div");
 card.className="card admin-card";
-
 const date=r.date?new Date(r.date).toLocaleDateString("fr-FR"):"Non renseignée";
-
 card.innerHTML=`
 <h3>🏢 ${escapeHTML(r.entreprise)}</h3>
 <p>Responsable : ${escapeHTML(r.responsable)}</p>
@@ -533,11 +418,9 @@ card.innerHTML=`
 <p>Statut : ${statusBadge(getStatus(r))}</p>
 <p class="small">Date de demande : ${escapeHTML(date)}</p>
 <div class="admin-actions">
-<button class="btn" onclick="changeVerification(${Number(r.id)},'verified')">Valider</button>
+<button class="btn" onclick="changeVerification(${Number(r.id)},'verified')">Valider en démo</button>
 <button class="btn red" onclick="changeVerification(${Number(r.id)},'refused')">Refuser</button>
-</div>
-`;
-
+</div>`;
 area.appendChild(card);
 });
 }
@@ -545,226 +428,166 @@ area.appendChild(card);
 function changeVerification(id,status){
 const requests=getRequests();
 const request=requests.find(r=>Number(r.id)===Number(id));
-
 if(!request)return;
 
 if(status==="verified"){
 const confirmation=confirm(
-"Confirmer le statut vérifié pour cet établissement dans cette démonstration locale ?"
+"ATTENTION : cette validation est uniquement locale et ne vérifie pas les justificatifs ni l'identité réelle de l'entreprise. Confirmer le badge de démonstration ?"
 );
 if(!confirmation)return;
+}else{
+if(!confirm("Confirmer le refus de cette demande ?"))return;
 }
-
 request.status=status;
+request.statusDate=new Date().toISOString();
 saveRequests(requests);
-
 renderAdmin();
 renderMyRequests();
 showJobs(jobs);
-
-alert(status==="verified"
-?"Statut modifié. Le badge de démonstration sera visible sur les annonces correspondantes."
-:"La demande a été refusée.");
+alert(status==="verified"?"Badge de démonstration attribué.":"Demande refusée.");
 }
 
 // RECHERCHE D'EMPLOI
-
 function showJobs(list){
 const area=document.getElementById("results");
 area.innerHTML="";
-
 if(!list.length){
 area.innerHTML='<div class="card">Aucune offre ne correspond à ces critères. Essaie d’élargir ta recherche.</div>';
 return;
 }
-
 list.forEach(job=>{
+const verified=isEmployerVerified(job);
 const el=document.createElement("div");
 el.className="job";
-
-const verified=isEmployerVerified(job.entreprise);
-
 el.innerHTML=`
 <span class="pill">${job.logement==="oui"?"Logement fourni":"Sans logement fourni"}</span>
-${verified?'<br><span class="badge-verified">✓ Employeur vérifié (démo)</span>':""}
+${verified?'<br><span class="badge-verified">✓ Établissement vérifié (démo)</span>':""}
 <h3>${escapeHTML(job.metier)}</h3>
 <p>📍 ${escapeHTML(job.ville)}</p>
 <p>🏢 ${escapeHTML(job.entreprise)}</p>
 <p>💶 ${Number(job.salaire).toLocaleString("fr-FR")} € brut / mois</p>
-<button class="btn" onclick="details(${Number(job.id)})">Voir l'offre</button>
-`;
-
+<button class="btn" onclick="details(${Number(job.id)})">Voir l'offre</button>`;
 area.appendChild(el);
 });
 }
 
 document.getElementById("searchForm").addEventListener("submit",function(e){
 e.preventDefault();
-
 const m=document.getElementById("metier").value.trim().toLowerCase();
 const d=document.getElementById("destination").value.trim().toLowerCase();
 const l=document.getElementById("logement").value;
 const s=Number(document.getElementById("salaire").value)||0;
-
 const filtered=jobs.filter(j=>
 (!m||j.metier.toLowerCase().includes(m))&&
 (!d||j.ville.toLowerCase().includes(d))&&
-(l==="tous"||j.logement===l)&&
-Number(j.salaire)>=s
+(l==="tous"||j.logement===l)&&Number(j.salaire)>=s
 );
-
 const summary=document.getElementById("searchSummary");
 summary.classList.remove("hidden");
-summary.textContent=
-"Recherche : "+(m||"Tous métiers")+
-" | "+(d||"Toutes destinations")+
-" | "+(l==="oui"?"Logement fourni":l==="non"?"Sans logement obligatoire":"Tous logements")+
-" | "+filtered.length+" offre(s) trouvée(s).";
-
+summary.textContent="Recherche : "+(m||"Tous métiers")+" | "+(d||"Toutes destinations")+" | "+(l==="oui"?"Logement fourni":l==="non"?"Sans logement obligatoire":"Tous logements")+" | "+filtered.length+" offre(s) trouvée(s).";
 showJobs(filtered);
 });
 
 // DETAILS D'UNE OFFRE
-
 function details(id){
 const j=jobs.find(x=>Number(x.id)===Number(id));
 if(!j)return;
-
-const verified=isEmployerVerified(j.entreprise);
-
+const verified=isEmployerVerified(j);
 document.getElementById("modalBody").innerHTML=`
 <h2>${escapeHTML(j.metier)}</h2>
 <p style="margin:12px 0;color:var(--cyan)">${escapeHTML(j.entreprise)}</p>
-${verified?'<p class="badge-verified">✓ Employeur vérifié (démo)</p>':""}
+${verified?'<p class="badge-verified">✓ Établissement vérifié (démo)</p>':'<p class="badge-identified">Employeur non vérifié par SEASONGO</p>'}
 <p>📍 ${escapeHTML(j.ville)}</p>
 <p>💶 ${Number(j.salaire).toLocaleString("fr-FR")} € brut / mois</p>
 <p>🏠 ${j.logement==="oui"?"Logement fourni":"Logement non fourni"}</p>
 <hr>
 <p>${escapeHTML(j.description)}</p>
-<br>
-<button class="btn" onclick="apply(${Number(j.id)})">Postuler à cette offre</button>
-`;
-
+<br><button class="btn" onclick="apply(${Number(j.id)})">Postuler à cette offre</button>`;
 document.getElementById("modal").classList.add("show");
 }
-
-function closeModal(){
-document.getElementById("modal").classList.remove("show");
-}
+function closeModal(){document.getElementById("modal").classList.remove("show");}
 
 // CANDIDATURE
-
 function apply(id){
 const j=jobs.find(x=>Number(x.id)===Number(id));
 if(!j)return;
-
 document.getElementById("modalBody").innerHTML=`
 <h2>📩 Candidature</h2>
 <p>Poste : ${escapeHTML(j.metier)} – ${escapeHTML(j.entreprise)}</p>
 <form id="applyForm">
-<div class="field">
-<label>Nom et prénom</label>
-<input required id="appName">
-</div>
-<div class="field">
-<label>Adresse e-mail</label>
-<input type="email" required id="appEmail">
-</div>
-<div class="field">
-<label>Message de motivation</label>
-<textarea required id="appMessage"></textarea>
-</div>
+<div class="field"><label>Nom et prénom</label><input required id="appName"></div>
+<div class="field"><label>Adresse e-mail</label><input type="email" required id="appEmail"></div>
+<div class="field"><label>Message de motivation</label><textarea required id="appMessage"></textarea></div>
 <button class="btn" type="submit">Préparer ma candidature</button>
 </form>
-<p class="small">Cette démonstration ne transmet pas encore la candidature à l'employeur.</p>
-`;
-
+<p class="small">Cette démonstration ne transmet pas encore la candidature à l'employeur.</p>`;
 document.getElementById("applyForm").addEventListener("submit",function(e){
 e.preventDefault();
-
 const name=document.getElementById("appName").value;
 const email=document.getElementById("appEmail").value;
 const msg=document.getElementById("appMessage").value;
-
 const subject="Candidature – "+j.metier;
 const body="Nom : "+name+"\nEmail : "+email+"\nMessage : "+msg;
-
 document.getElementById("modalBody").innerHTML=`
 <h2>Votre candidature est prête !</h2>
 <p>Vous pouvez copier votre message pour le transmettre à l'établissement.</p>
 <button class="btn" id="copyApplication">Copier ma candidature</button>
-<p class="small">La candidature n'a pas encore été envoyée.</p>
-`;
-
-document.getElementById("copyApplication").addEventListener("click",function(){
-copyText(subject+"\n\n"+body);
-});
+<p class="small">La candidature n'a pas encore été envoyée.</p>`;
+document.getElementById("copyApplication").addEventListener("click",()=>copyText(subject+"\n\n"+body));
 });
 }
-
 function copyText(t){
 if(navigator.clipboard&&navigator.clipboard.writeText){
-navigator.clipboard.writeText(t)
-.then(()=>alert("Texte copié !"))
-.catch(()=>alert("Copie impossible sur cet appareil."));
-}else{
-alert(t);
-}
+navigator.clipboard.writeText(t).then(()=>alert("Texte copié !")).catch(()=>alert("Copie impossible sur cet appareil."));
+}else{alert(t);}
 }
 
 // AJOUT D'UNE OFFRE
-
 document.getElementById("jobForm").addEventListener("submit",function(e){
 e.preventDefault();
-
+const s=document.getElementById("jobSiret").value.trim();
+if(!validSiret(s)){
+alert("Le SIRET doit contenir 14 chiffres avec une clé de contrôle valide.");
+return;
+}
 const job={
 id:Date.now(),
 entreprise:document.getElementById("jobEntreprise").value.trim(),
+siret:s,
 metier:document.getElementById("jobMetier").value.trim(),
 ville:document.getElementById("jobVille").value.trim(),
 salaire:Number(document.getElementById("jobSalaire").value),
 logement:document.getElementById("jobLogement").value,
 description:document.getElementById("jobDescription").value.trim()
 };
-
 jobs.push(job);
 localStorage.setItem("seasongo_jobs",JSON.stringify(jobs));
-
 document.getElementById("jobResult").innerHTML=
-'<div class="notice">Offre ajoutée à la démonstration SEASONGO.</div>';
-
+'<div class="notice">Offre ajoutée à la démonstration SEASONGO. Son badge dépend du statut de vérification du SIRET associé.</div>';
 this.reset();
 });
 
-// CALCUL DU BUDGET
-
+// BUDGET
 document.getElementById("budgetForm").addEventListener("submit",function(e){
 e.preventDefault();
-
 const r=Number(document.getElementById("revenu").value);
 const d=Number(document.getElementById("depenses").value);
 const m=Number(document.getElementById("mois").value);
-
 if(r<0||d<0||m<=0||!Number.isFinite(r)||!Number.isFinite(d)||!Number.isFinite(m)){
 alert("Vérifie tes chiffres.");
 return;
 }
-
 const monthly=r-d;
 const total=monthly*m;
 const box=document.getElementById("budgetResult");
-
 box.classList.remove("hidden");
-box.innerHTML=
-"Épargne mensuelle estimée : <strong>"+monthly.toLocaleString("fr-FR")+" €</strong><br>"+
-"Épargne totale estimée : <strong>"+total.toLocaleString("fr-FR")+" €</strong>";
+box.innerHTML="Épargne mensuelle estimée : <strong>"+monthly.toLocaleString("fr-FR")+" €</strong><br>Épargne totale estimée : <strong>"+total.toLocaleString("fr-FR")+" €</strong>";
 });
 
 // INITIALISATION
-
 renderMyRequests();
 renderAdmin();
-
+showJobs(jobs);
 </script>
 </body>
 </html>
