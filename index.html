@@ -5,122 +5,286 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SEASONGO - Vivre sa saison autrement</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#071a36;color:white}
-header{text-align:center;padding:25px 15px;background:#102e59}
-.logo{font-size:36px;font-weight:bold;color:#36d5ff}
-header p{color:#c5d9f5}
-main{max-width:850px;margin:auto;padding:18px}
-section{background:#102b50;padding:18px;border-radius:14px;margin-bottom:18px}
-h2{color:#42d5ff}
-input,select{width:100%;padding:13px;margin:7px 0;border:0;border-radius:8px;font-size:15px}
-button{background:#28c7ed;color:#06203e;border:0;padding:13px 18px;border-radius:8px;font-weight:bold;cursor:pointer;margin:5px 0}
-button:hover{background:#75e5ff}
-.offer{background:#183c69;padding:16px;border-radius:12px;margin-top:12px}
-.badge{display:inline-block;padding:6px 9px;border-radius:6px;background:#176b50;color:white;font-size:12px;margin:4px 3px 4px 0}
-.warning{background:#503b20;padding:12px;border-radius:8px;color:#ffe1a0}
-.details{display:none;background:#0b2444;padding:13px;border-radius:8px;margin-top:10px}
-.secondary{background:#d8e8f7;color:#102b50}
-#results{margin-top:15px}
-small{color:#b8cee8}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#071b35;
+ color:white;
+}
+header{
+ background:#0c2d53;
+ padding:24px 15px;
+ text-align:center;
+}
+.logo{
+ font-size:35px;
+ font-weight:bold;
+ color:#35c8ff;
+ letter-spacing:2px;
+}
+header p{color:#c5d9ee}
+nav{
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:center;
+ gap:9px;
+ padding:15px;
+ background:#102b4b;
+}
+button{
+ background:#087fc4;
+ color:white;
+ border:0;
+ padding:12px 17px;
+ border-radius:9px;
+ cursor:pointer;
+ font-weight:bold;
+}
+button:hover{background:#13a5ed}
+main{
+ max-width:850px;
+ margin:auto;
+ padding:20px;
+}
+.card{
+ background:#12365c;
+ border:1px solid #28527a;
+ border-radius:14px;
+ padding:20px;
+ margin:18px 0;
+}
+h2{color:#40caff}
+input,select,textarea{
+ display:block;
+ width:100%;
+ padding:13px;
+ margin:10px 0;
+ border-radius:8px;
+ border:1px solid #8aa8c5;
+ font-size:16px;
+}
+.offer{
+ background:#0b2949;
+ padding:17px;
+ border-radius:10px;
+ margin:15px 0;
+ border:1px solid #315879;
+}
+.badge{
+ display:inline-block;
+ padding:6px 10px;
+ border-radius:20px;
+ font-size:12px;
+ font-weight:bold;
+ margin:7px 0;
+}
+.verified{background:#126c49;color:#a9ffcf}
+.pending{background:#74551a;color:#ffe19a}
+.demo{background:#62428b;color:#ead5ff}
+.small{font-size:13px;color:#c0d4e8}
+.hidden{display:none}
+footer{
+ text-align:center;
+ padding:25px;
+ color:#9cb6d0;
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<div class="logo">SEASONGO</div>
-<p>Vivre sa saison autrement 🌍</p>
+ <div class="logo">SEASONGO</div>
+ <h2>Vivre sa saison autrement</h2>
+ <p>Emploi • Logement • Rencontres • Bons plans</p>
 </header>
+
+<nav>
+ <button onclick="show('home')">Accueil</button>
+ <button onclick="show('search')">Trouver un emploi</button>
+ <button onclick="show('verification')">Employeurs vérifiés</button>
+</nav>
 
 <main>
 
-<section>
-<h2>🔎 Trouve ta saison</h2>
-<input id="job" placeholder="Métier recherché (serveur, cuisinier...)">
-<input id="place" placeholder="Station ou ville (Tignes, Avoriaz...)">
-<select id="housing">
-<option value="all">Logement : indifférent</option>
-<option value="yes">Logement obligatoire</option>
-</select>
-<button onclick="searchOffers()">Lancer la recherche</button>
-<div id="results"></div>
+<section id="home">
+ <div class="card">
+  <h2>Bienvenue sur SEASONGO !</h2>
+  <p>La plateforme pensée pour les travailleurs saisonniers.</p>
+  <p>Des offres d'emploi, du logement et une communauté pour vivre pleinement ta saison.</p>
+  <button onclick="show('search')">Découvrir les offres</button>
+ </div>
+
+ <div class="card">
+  <h2>🛡️ Notre engagement confiance</h2>
+  <p>Notre objectif : lutter contre les fausses annonces et les employeurs frauduleux.</p>
+  <button onclick="show('verification')">Découvrir notre système</button>
+ </div>
 </section>
 
-<section>
-<h2>🛡️ SEASONGO CONFIANCE</h2>
-<p>Notre priorité : protéger les saisonniers contre les fausses annonces.</p>
-<div class="badge">✓ Employeur contrôlé</div>
-<div class="badge">✓ Annonce confirmée</div>
-<div class="warning">
-⚠️ Attention : ne verse jamais d'argent pour obtenir un emploi. Ne transmets jamais tes documents personnels à un contact non vérifié.
-</div>
+<section id="search" class="hidden">
+ <div class="card">
+  <h2>🔎 Recherche saisonnière</h2>
+
+  <label>Métier recherché</label>
+  <input id="job" placeholder="Ex : Serveur, cuisinier, barman">
+
+  <label>Destination</label>
+  <input id="place" placeholder="Ex : Tignes, Avoriaz, Megève">
+
+  <label>Logement</label>
+  <select id="housing">
+   <option value="all">Avec ou sans logement</option>
+   <option value="yes">Logement obligatoire</option>
+  </select>
+
+  <button onclick="searchOffers()">Lancer la recherche</button>
+ </div>
+
+ <div id="results"></div>
 </section>
 
-<section>
-<h2>🤝 Notre engagement</h2>
-<p>SEASONGO souhaite créer un espace plus sûr pour les travailleurs saisonniers.</p>
-<p>Les badges de vérification seront attribués après contrôle réel des établissements et des offres.</p>
+<section id="verification" class="hidden">
+ <div class="card">
+  <h2>🛡️ La confiance SEASONGO</h2>
+  <p>Nous voulons mettre fin aux annonces douteuses et aux fausses offres d'emploi.</p>
+
+  <h3>Comment fonctionne la vérification ?</h3>
+  <p>Chaque employeur devra pouvoir justifier son identité professionnelle.</p>
+
+  <ul>
+   <li>Vérification de l'identité de l'entreprise.</li>
+   <li>Contrôle du SIRET ou de l'immatriculation équivalente.</li>
+   <li>Vérification des coordonnées professionnelles.</li>
+   <li>Confirmation que l'annonce est bien publiée par l'employeur.</li>
+   <li>Contrôle des informations relatives au poste et au logement.</li>
+  </ul>
+
+  <p><span class="badge verified">✓ Employeur vérifié</span> Identité et annonce contrôlées.</p>
+  <p><span class="badge pending">En attente</span> Vérification non terminée.</p>
+  <p><span class="badge demo">Démonstration</span> Annonce fictive de test.</p>
+ </div>
+
+ <div class="card">
+  <h2>🏢 Devenir un employeur vérifié</h2>
+  <p>Vous recrutez des saisonniers ? Rejoignez SEASONGO.</p>
+
+  <form id="employerForm">
+   <input id="company" placeholder="Nom de l'établissement" required>
+   <input id="manager" placeholder="Nom du responsable" required>
+   <input id="siret" placeholder="Numéro SIRET ou immatriculation" required>
+   <input id="email" type="email" placeholder="Adresse e-mail professionnelle" required>
+   <input id="city" placeholder="Ville et station" required>
+
+   <button type="submit">Demander une vérification</button>
+  </form>
+
+  <p class="small">Démonstration : aucune donnée n'est envoyée ni vérifiée pour le moment.</p>
+  <div id="confirmation"></div>
+ </div>
 </section>
 
 </main>
 
+<footer>
+ SEASONGO © 2026 — Vivre sa saison autrement
+</footer>
+
 <script>
+
 const offers = [
-{
-title:"Serveur / Serveuse",
-place:"Tignes",
-housing:true,
-description:"Poste saisonnier en restauration. Service en salle, accueil et accompagnement des clients.",
-details:"Contrat saisonnier. Expérience en restauration appréciée. Conditions et rémunération à confirmer auprès de l'employeur."
-}
+ {
+  job:"Serveur",
+  place:"Tignes",
+  housing:true,
+  company:"Restaurant des Sommets",
+  description:"Poste de serveur pour la saison d'hiver. Logement fourni.",
+  demo:true
+ },
+ {
+  job:"Cuisinier",
+  place:"Avoriaz",
+  housing:true,
+  company:"Auberge des Neiges",
+  description:"Recherche cuisinier pour la saison hivernale. Logement fourni.",
+  demo:true
+ },
+ {
+  job:"Barman",
+  place:"Megève",
+  housing:false,
+  company:"Le Bar des Alpes",
+  description:"Poste de barman en station pour la saison.",
+  demo:true
+ }
 ];
 
+function show(section){
+ document.querySelectorAll("main section").forEach(s=>{
+  s.classList.add("hidden");
+ });
+ document.getElementById(section).classList.remove("hidden");
+ window.scrollTo(0,0);
+}
+
 function searchOffers(){
-const job=document.getElementById("job").value.toLowerCase().trim();
-const place=document.getElementById("place").value.toLowerCase().trim();
-const housing=document.getElementById("housing").value;
-const results=document.getElementById("results");
-const found=offers.filter(o=>
-(!job || o.title.toLowerCase().includes(job)) &&
-(!place || o.place.toLowerCase().includes(place)) &&
-(housing!=="yes" || o.housing)
-);
-results.innerHTML=found.length ? "<h3>Offres correspondantes</h3>" : "<p>Aucune offre correspondante pour le moment.</p>";
-found.forEach((o,i)=>{
-results.innerHTML+=`
-<div class="offer">
-<h3>${o.title}</h3>
-<p>📍 ${o.place}</p>
-<p>🏠 Logement fourni</p>
-<small>Offre de démonstration — non vérifiée</small><br>
-<button onclick="showDetails(${i})">Voir le détail</button>
-<div id="detail${i}" class="details">
-<p>${o.description}</p>
-<p>${o.details}</p>
-<div class="warning">Cette annonce est une démonstration. L'employeur et l'offre ne sont pas vérifiés.</div>
-<button onclick="apply()">Postuler</button>
-<button class="secondary" onclick="report()">Signaler cette annonce</button>
-</div>
-</div>`;
+ const job=document.getElementById("job").value.toLowerCase().trim();
+ const place=document.getElementById("place").value.toLowerCase().trim();
+ const housing=document.getElementById("housing").value;
+
+ const filtered=offers.filter(o=>
+  (!job || o.job.toLowerCase().includes(job)) &&
+  (!place || o.place.toLowerCase().includes(place)) &&
+  (housing!=="yes" || o.housing)
+ );
+
+ const results=document.getElementById("results");
+
+ if(filtered.length===0){
+  results.innerHTML='<div class="card"><h2>Aucun résultat</h2><p>Essaie de modifier tes critères de recherche.</p></div>';
+  return;
+ }
+
+ results.innerHTML=filtered.map((o,i)=>`
+  <div class="offer">
+   <h3>${o.job} — ${o.place}</h3>
+   <span class="badge demo">Annonce de démonstration</span>
+   <p><strong>${o.company}</strong></p>
+   <p>${o.description}</p>
+   <p>Logement : ${o.housing?"Fourni":"Non indiqué"}</p>
+   <p class="small">Employeur non encore vérifié.</p>
+   <button onclick="showDetails('${offers.indexOf(o)}')">Voir les détails</button>
+  </div>
+ `).join("");
+}
+
+function showDetails(index){
+ const o=offers[index];
+ const results=document.getElementById("results");
+
+ results.innerHTML=`
+ <div class="card">
+  <h2>${o.job} — ${o.place}</h2>
+  <span class="badge demo">Annonce de démonstration</span>
+  <p>Établissement : ${o.company}</p>
+  <p>${o.description}</p>
+  <p>Logement : ${o.housing?"Fourni":"Non indiqué"}</p>
+  <p>Statut : employeur non vérifié.</p>
+  <button onclick="alert('Fonctionnalité de candidature à connecter prochainement.')">Postuler</button>
+  <button onclick="searchOffers()">Retour aux offres</button>
+ </div>`;
+}
+
+document.getElementById("employerForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ document.getElementById("confirmation").innerHTML=
+ '<p class="badge pending">Demande de démonstration enregistrée sur cette page.</p><p>La vérification réelle sera disponible après connexion au serveur SEASONGO.</p>';
+ this.reset();
 });
-}
 
-function showDetails(i){
-const el=document.getElementById("detail"+i);
-el.style.display=el.style.display==="block"?"none":"block";
-}
-
-function apply(){
-alert("Candidature de démonstration : aucune candidature réelle n'a été envoyée.");
-}
-
-function report(){
-const reason=prompt("Pourquoi souhaites-tu signaler cette annonce ?");
-if(reason && reason.trim()){
-alert("Merci pour ton signalement. Cette démonstration ne transmet pas encore le signalement à un administrateur.");
-}
-}
 </script>
 </body>
 </html>
