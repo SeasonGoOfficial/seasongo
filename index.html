@@ -1,92 +1,96 @@
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SEASONGO</title>
+<title>SEASONGO - Vivre sa saison autrement</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#07152e;color:white;font-family:Arial,sans-serif}
-header{text-align:center;padding:25px 15px;background:#102b50}
-.logo{font-size:35px;font-weight:bold;color:#42d9ff}
-header p{color:#c8eaff}
-main{padding:18px;max-width:650px;margin:auto}
-h2{color:#42d9ff}
-.card{background:#13294a;padding:18px;border-radius:15px;margin:15px 0}
-input,select{width:100%;padding:14px;margin:8px 0;border:0;border-radius:8px;font-size:16px}
-button{background:#12bce5;color:#06152d;border:0;padding:14px;border-radius:9px;font-weight:bold;font-size:16px;width:100%;margin-top:10px}
-nav{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-nav button{background:#203d63;color:white}
-.result{border-bottom:1px solid #456080;padding:12px 0}
-.small{color:#a9c7e5;font-size:13px}
+body{margin:0;font-family:Arial,sans-serif;background:#071b36;color:white}
+header{text-align:center;padding:28px 15px;background:#102e55}
+.logo{font-size:35px;font-weight:bold;color:#49d5ff}
+header p{color:#d4eaff}
+main{max-width:700px;margin:25px auto;padding:18px}
+.panel{background:#12345b;padding:22px;border-radius:16px}
+h2{margin-top:0}
+label{display:block;margin:14px 0 7px}
+input,select{width:100%;padding:14px;border:0;border-radius:9px;font-size:16px}
+button{width:100%;padding:15px;margin-top:17px;border:0;border-radius:9px;background:#22c5ef;color:#06213b;font-weight:bold;font-size:16px}
+button:active{opacity:.8}
+#results{margin-top:22px}
+.offer{background:#fff;color:#10233e;border-radius:12px;padding:17px;margin:14px 0}
+.offer h3{color:#087da9;margin-top:0}
+.tag{display:inline-block;background:#dff6ff;padding:6px 9px;border-radius:6px;margin:4px;font-size:13px}
+.details{display:none;margin-top:12px;padding:12px;background:#edf8ff;border-radius:8px}
+.small{font-size:13px;color:#c9e6ff;text-align:center}
 </style>
 </head>
 <body>
 <header>
 <div class="logo">SEASONGO</div>
-<p>Vivre sa saison autrement ❄️</p>
-<p>Le monde des saisonniers, enfin réuni !</p>
+<p>Vivre sa saison autrement</p>
 </header>
-
 <main>
-<div class="card">
-<h2>🔎 Trouve ton emploi saisonnier</h2>
-<input id="job" placeholder="Métier recherché (serveur, cuisinier...)">
-<input id="place" placeholder="Station ou ville souhaitée">
+<div class="panel">
+<h2>🔎 Trouve ta prochaine saison</h2>
+<label>Métier recherché</label>
+<input id="job" placeholder="Ex : serveur">
+<label>Destination</label>
+<input id="place" placeholder="Ex : Tignes">
+<label>Logement</label>
 <select id="housing">
-<option value="">Logement : indifférent</option>
-<option value="yes">Logement fourni obligatoire</option>
+<option value="yes">Logement obligatoire</option>
+<option value="no">Logement non obligatoire</option>
+<option value="all">Toutes les offres</option>
 </select>
-<button onclick="searchJobs()">LANCER LA RECHERCHE</button>
+<button onclick="searchOffers()">Lancer la recherche</button>
+</div>
 <div id="results"></div>
-</div>
-
-<h2>🌍 Explore SEASONGO</h2>
-<nav>
-<button onclick="show('verification')">🛡️ Offres vérifiées</button>
-<button onclick="show('budget')">💰 Mon budget</button>
-<button onclick="show('geo')">📍 Compagnon géographique</button>
-<button onclick="show('sorties')">🎉 Sorties en station</button>
-<button onclick="show('chat')">💬 Communauté</button>
-<button onclick="show('bonsplans')">🎿 Bons plans</button>
-</nav>
-<div class="card" id="info">
-<h2>Bienvenue sur SEASONGO !</h2>
-<p>Ta prochaine saison commence ici.</p>
-</div>
-<p class="small">SEASONGO – La confiance avant tout. Les offres affichées devront être vérifiées avant publication.</p>
+<p class="small">SEASONGO – La saison commence ici.</p>
 </main>
-
 <script>
-function searchJobs(){
-let job=document.getElementById('job').value.trim();
-let place=document.getElementById('place').value.trim();
-let housing=document.getElementById('housing').value;
-let results=document.getElementById('results');
-
-if(!job&&!place){
-results.innerHTML='<p>Indique un métier ou une destination pour commencer.</p>';
+const offers=[
+{job:"Serveur",place:"Tignes",housing:true,salary:"Selon expérience",contract:"Saison hiver",description:"Poste de serveur en restauration à Tignes. Contact et conditions à confirmer auprès de l'employeur."},
+{job:"Chef de rang",place:"Tignes",housing:true,salary:"À définir",contract:"Saison hiver",description:"Recherche chef de rang pour la saison d'hiver. Logement proposé, modalités à confirmer."},
+{job:"Barman",place:"Tignes",housing:false,salary:"Selon expérience",contract:"Saison hiver",description:"Poste de barman en station. Conditions à confirmer auprès de l'établissement."},
+{job:"Serveur",place:"Val Thorens",housing:true,salary:"Selon profil",contract:"Saison hiver",description:"Exemple de poste saisonnier. Annonce de démonstration, non vérifiée."},
+{job:"Serveur",place:"Avoriaz",housing:true,salary:"À définir",contract:"Saison hiver",description:"Exemple de poste saisonnier. Annonce de démonstration, non vérifiée."}
+];
+function searchOffers(){
+const job=document.getElementById("job").value.trim().toLowerCase();
+const place=document.getElementById("place").value.trim().toLowerCase();
+const housing=document.getElementById("housing").value;
+const results=document.getElementById("results");
+let found=offers.filter(o=>
+(!job||o.job.toLowerCase().includes(job))&&
+(!place||o.place.toLowerCase().includes(place))&&
+(housing!=="yes"||o.housing)
+);
+results.innerHTML="<h2>Résultats de ta recherche</h2>";
+if(found.length===0){
+results.innerHTML+="<div class='panel'>Aucune offre dans notre démonstration pour ces critères. Essaie une autre destination ou un autre métier.</div>";
 return;
 }
-
-let query=[job,place,housing==='yes'?'logement fourni':''].filter(Boolean).join(' ');
-let url='https://www.google.com/search?q='+encodeURIComponent('emploi saisonnier '+query);
-
-results.innerHTML='<p>Recherche préparée pour : <b>'+query+'</b></p><button onclick="window.open(\''+url+'\',\'_blank\')">VOIR LES OFFRES DISPONIBLES</button><p class="small">Les résultats externes ne sont pas encore vérifiés par SEASONGO.</p>';
+found.forEach((o,i)=>{
+results.innerHTML+=`
+<div class="offer">
+<h3>${o.job} – ${o.place}</h3>
+<span class="tag">${o.housing?"Logement fourni":"Logement non précisé"}</span>
+<span class="tag">${o.contract}</span>
+<p><b>Salaire :</b> ${o.salary}</p>
+<button onclick="showDetails(${i})">Voir l'annonce</button>
+<div class="details" id="detail${i}">
+<p>${o.description}</p>
+<p><b>Important :</b> Offre de démonstration SEASONGO, pas une annonce d'emploi réelle vérifiée.</p>
+</div>
+</div>`;
+});
 }
-
-function show(section){
-let content={
-verification:['🛡️','La confiance avant tout','Notre objectif : vérifier l’identité des employeurs et l’authenticité de chaque annonce.'],
-budget:['💰','Ton budget saison','Bientôt : estime ton salaire, tes dépenses et tes économies possibles.'],
-geo:['📍','Compagnon géographique','Retrouve les informations utiles autour de ta future station.'],
-sorties:['🎉','La vie en station','Découvre les soirées, événements et activités près de toi.'],
-chat:['💬','Communauté SEASONGO','Un espace pour échanger, partager des conseils et organiser du covoiturage.'],
-bonsplans:['🎿','Bons plans','Retrouve les avantages et réductions pour les saisonniers.']
-};
-let c=content[section];
-document.getElementById('info').innerHTML='<h2>'+c[0]+' '+c[1]+'</h2><p>'+c[2]+'</p>';
+function showDetails(i){
+const box=document.getElementById("detail"+i);
+box.style.display=box.style.display==="block"?"none":"block";
 }
 </script>
 </body>
